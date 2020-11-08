@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * User: Barret
- * Date: 10 déc. 2009
+ * Date: 10 dÃ©c. 2009
  * Time: 22:00:47
  */
 public class AlgoAlphaBeta implements AlgoRecherche {
@@ -191,7 +191,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
 		//log.fine("liste="+liste.size());
 		//log.finest("liste=" + liste.size());
 		if(!liste.isEmpty())
-		{// il y a au moins un coup à jouer
+		{// il y a au moins un coup Ã  jouer
 			if (max) {
 				//score_meilleur = 0;
 				score_meilleur = Integer.MIN_VALUE;

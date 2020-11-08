@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -11,8 +11,8 @@ package othello.neuronespack;
 import java.util.*;
 
 /**
- * <p>Title: Unités externes</p>
- * <p>Description: Gestion des unités externes (liens hors du réseau en entrée et en sortie).</p>
+ * <p>Title: UnitÃ©s externes</p>
+ * <p>Description: Gestion des unitÃ©s externes (liens hors du rÃ©seau en entrÃ©e et en sortie).</p>
  */
 public class UniteExterne implements Unite {
 
@@ -20,9 +20,9 @@ public class UniteExterne implements Unite {
   private Vector synapsesIn;
   /** Liste des synapses sortantes */
   private Vector synapsesOut;
-  /** ID de l’unité */
+  /** ID de lâ€™unitÃ© */
   private int idUnite;
-  /** Signal associé à l’unité */
+  /** Signal associÃ© Ã  lâ€™unitÃ© */
   private double signalCourant;
 
   /** Constructeur avec un identifiant */
@@ -33,12 +33,12 @@ public class UniteExterne implements Unite {
     synapsesOut = new Vector(1);
   }
 
-  /** Ajoute une synapse entrant dans l'unité */
+  /** Ajoute une synapse entrant dans l'unitÃ© */
   public void addSynapsesIn(Synapse s) {
     synapsesIn.addElement(s);
   }
 
-  /** Ajoute une synapse sortant de l'unité */
+  /** Ajoute une synapse sortant de l'unitÃ© */
   public void addSynapsesOut(Synapse s) {
     synapsesOut.addElement(s);
   }

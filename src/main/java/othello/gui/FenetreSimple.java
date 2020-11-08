@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * User: Barret
- * Date: 5 déc. 2009
+ * Date: 5 dÃ©c. 2009
  * Time: 15:30:57
  */
 public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxListener {
@@ -342,7 +342,7 @@ public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxLis
 			
 		}
 		cadrillage.repaint();
-		log.info("durée:"+controleur.affiche_temps());
+		log.info("durÃ©e:"+controleur.affiche_temps());
 	}
 
 	public void changement_joueur(Joueur joueur) {
@@ -361,7 +361,7 @@ public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxLis
 		int max,score;
 		boolean exequo;
 		mise_a_jour();
-		message= "La partie est terminée.\n";
+		message= "La partie est terminÃ©e.\n";
 		liste = controleur.getListe_joueurs();
 		if(liste!=null&&liste.length>0)
 		{
@@ -394,7 +394,7 @@ public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxLis
 			}
 			else
 			{
-				message += "Le joueur "+ gagnant+" a gagné !\n";
+				message += "Le joueur "+ gagnant+" a gagnÃ© !\n";
 			}
 		}
 		JOptionPane.showMessageDialog(this, message);

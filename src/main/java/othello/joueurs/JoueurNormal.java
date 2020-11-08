@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
 
 /**
  * User: Barret
- * Date: 6 déc. 2009
+ * Date: 6 dÃ©c. 2009
  * Time: 10:05:29
  */
 public abstract class JoueurNormal implements Joueur {

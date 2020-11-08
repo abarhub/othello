@@ -179,11 +179,11 @@ public class JeuxAuto implements EtatJeuxListener {
     }
 
 	private void affiche_duree() {
-		log.info("durée:\n"+controleur.affiche_temps());
+		log.info("durÃ©e:\n"+controleur.affiche_temps());
 	}
 
 	public void joueur_bloque(Joueur joueur) {
-        log.info("Joueur "+joueur+" bloqué");
+        log.info("Joueur "+joueur+" bloquÃ©");
     }
 
     public void fin_partie() {
@@ -241,7 +241,7 @@ public class JeuxAuto implements EtatJeuxListener {
             c=joueur.getCouleur();
             debut+="Gagnant : "+c+"\n";
             debut+="Nb tours : "+nb_tours+"\n";
-            debut+="Durée : "+conv(this.fin-this.debut)+"\n";
+            debut+="DurÃ©e : "+conv(this.fin-this.debut)+"\n";
         }
         debut+="Tableau:\n";
         s="";

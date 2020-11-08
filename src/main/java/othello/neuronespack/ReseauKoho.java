@@ -2,25 +2,25 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
 
 /**
- * <p>Title: Réseau de Kohonen</p>
- * <p>Description: Gestion des réseaux de Kohonen</p>
+ * <p>Title: RÃ©seau de Kohonen</p>
+ * <p>Description: Gestion des rÃ©seaux de Kohonen</p>
  */
 public class ReseauKoho extends Reseau {
 
   /** Pas d'apprentissage initial */
   private double eta0;
-  /** Rayon initial d'influence latérale */
+  /** Rayon initial d'influence latÃ©rale */
   private double sigma0;
-  /** Nombre maximum d'itérations */
+  /** Nombre maximum d'itÃ©rations */
   private int maxIteration;
-  /** Numéro d'itération courante */
+  /** NumÃ©ro d'itÃ©ration courante */
   public  int numIteration;
   /** Constante temporelle */
   private  double tau;
@@ -49,17 +49,17 @@ public class ReseauKoho extends Reseau {
   }
 
   /**
-   * Création d'une couche de Kohonen
+   * CrÃ©ation d'une couche de Kohonen
    * @param tailleX int : Taille en x
    * @param tailleY int : Taille en y
    * @param ft int : Fonction de transfert
-   * @param pFT double[]  : Paramètres de la fonction de transfert
+   * @param pFT double[]  : ParamÃ¨tres de la fonction de transfert
    */
   public void ajouteCouche(int tailleX, int tailleY, int ft, double pFT[]) {
     addCouche(new CoucheKoho(tailleX, tailleY, ft, pFT));
   }
 
-  /** Construit les connexions d'entrées */
+  /** Construit les connexions d'entrÃ©es */
   public void construitConnexionsEntrees() {
     boolean mc[][] =
         new boolean[getCouche(0).getNbUnites()]
@@ -157,12 +157,12 @@ public class ReseauKoho extends Reseau {
     return sigma0 * Math.exp(-1.0D*(numIteration/tau));
   }
 
-  /** Setter nb total d'itérations */
+  /** Setter nb total d'itÃ©rations */
   public void setMaxIteration(int m) {
     maxIteration = m;
   }
 
-  /** Getter nb total d'itérations */
+  /** Getter nb total d'itÃ©rations */
   public int getMaxIteration() {
     return maxIteration;
   }

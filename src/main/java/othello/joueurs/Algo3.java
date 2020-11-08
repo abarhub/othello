@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * User: Barret
- * Date: 10 déc. 2009
+ * Date: 10 dÃ©c. 2009
  * Time: 22:00:47
  */
 public class Algo3 implements AlgoRecherche {

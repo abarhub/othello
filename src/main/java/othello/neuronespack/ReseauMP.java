@@ -2,22 +2,22 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
 
 /**
- * <p>Title: Réseau de McCulloch-Pitts</p>
- * <p>Description: Gestion des réseaux de McCulloch-Pitts.</p>
+ * <p>Title: RÃ©seau de McCulloch-Pitts</p>
+ * <p>Description: Gestion des rÃ©seaux de McCulloch-Pitts.</p>
  */
 public class ReseauMP extends Reseau {
   public static int ACTIF = 1;
   public static int INHIBE = -1;
 
   /**
-   * Constructeur du réseau
+   * Constructeur du rÃ©seau
    * @param nbC int : Nombre de couches
    */
   public ReseauMP(int nbC) {
@@ -25,7 +25,7 @@ public class ReseauMP extends Reseau {
   }
 
   /**
-   * Construit un réseau MP
+   * Construit un rÃ©seau MP
    * @param paramReseau int[] : Nombre de neurones par couche
    * @param vb double[][] : Valeurs des biais (seuils) par couche et par neurone
    */
@@ -38,10 +38,10 @@ public class ReseauMP extends Reseau {
   }
 
   /**
-   * Création d'une couche
+   * CrÃ©ation d'une couche
    * @param nbN int : nombre de neurones
    * @param ft int : type de fonction de transfert
-   * @param pFT int[] : paramètres de la fonction de transfert
+   * @param pFT int[] : paramÃ¨tres de la fonction de transfert
    */
   public void ajouteCouche(int nbN, int ft, double pFT[]) {
     addCouche(new CoucheMP(nbN, ft, pFT));

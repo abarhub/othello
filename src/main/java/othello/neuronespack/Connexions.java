@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * <p>Title: Connexions</p>
- * <p>Description: Gestion des connexions entre unités.</p>
+ * <p>Description: Gestion des connexions entre unitÃ©s.</p>
  */
 public class Connexions {
 
@@ -24,9 +24,9 @@ public class Connexions {
   private Vector lesSynapses;
   /** Nombre de synapses */
   private int nbSynapses;
-  /** Nombre d'unités émettrices */
+  /** Nombre d'unitÃ©s Ã©mettrices */
   private int nbUnitesEmettrices;
-  /** Nombre d'unités réceptrices */
+  /** Nombre d'unitÃ©s rÃ©ceptrices */
   private int nbUnitesReceptrices;
   /** Groupe d'origine */
   private GroupeUnites groupeOrigineConnexions;
@@ -40,7 +40,7 @@ public class Connexions {
    * @param t int : Type de connexion
    * @param c1 GroupeUnites : Groupe d'origine
    * @param c2 GroupeUnites : Groupe de destination
-   * @param mc boolean[][] : Matrice des connexions Emission x Réception.
+   * @param mc boolean[][] : Matrice des connexions Emission x RÃ©ception.
    */
   public Connexions(int t, GroupeUnites c1, GroupeUnites c2, boolean mc[][]) {
     setTypeConnexions(t);
@@ -59,7 +59,7 @@ public class Connexions {
   }
 
   /**
-   * Connecte des unités
+   * Connecte des unitÃ©s
    * @param mc boolean[][] : matrice des connexions.
    */
   public void connecte(boolean mc[][]) {
@@ -92,7 +92,7 @@ public class Connexions {
   }
 
   /**
-   * Initialisation aléatoire des poids des connexions
+   * Initialisation alÃ©atoire des poids des connexions
    * @param min double : Valeur minimum
    * @param max double : Valeur maximum
    */
@@ -103,7 +103,7 @@ public class Connexions {
     }
   }
 
-  /** Fixe tout les poids à une valeur donnée */
+  /** Fixe tout les poids Ã  une valeur donnÃ©e */
   public void setPoidsFixes(double p) {
     for (int i = 0; i < nbSynapses; i++) {
       ((Synapse)lesSynapses.elementAt(i)).setPoids(p);
@@ -151,7 +151,7 @@ public class Connexions {
     return nbUnitesEmettrices;
   }
 
-  /** Getter du nombre d'unites réceptrices */
+  /** Getter du nombre d'unites rÃ©ceptrices */
   public int getNbUnitesReceptrices() {
     return nbUnitesReceptrices;
   }
@@ -187,7 +187,7 @@ public class Connexions {
   }
 
   /**
-   * Renvoie flag de connexion entre 2 unités
+   * Renvoie flag de connexion entre 2 unitÃ©s
    * @param mc boolean[][] : matrice des connexions
    * @param x int : position en x dans la matrice
    * @param y int : position en y dans la matrice
@@ -198,9 +198,9 @@ public class Connexions {
   }
 
   /**
-   * Construit une matrice de connexions complètes
-   * @param nbe int : Nombre d'unités émettrices
-   * @param nbr int : Nombre d'unités réceptrices
+   * Construit une matrice de connexions complÃ¨tes
+   * @param nbe int : Nombre d'unitÃ©s Ã©mettrices
+   * @param nbr int : Nombre d'unitÃ©s rÃ©ceptrices
    * @param mc boolean[][] : Matrice de connexions
    */
   static public void construitConnexionsCompletes(int nbe, int nbr, boolean mc[][]) {
@@ -213,8 +213,8 @@ public class Connexions {
 
   /**
    * Construit une matrice de connexions directes (diagonale)
-   * @param nbe int : Nombre d'unités émettrices
-   * @param nbr int : Nombre d'unités réceptrices
+   * @param nbe int : Nombre d'unitÃ©s Ã©mettrices
+   * @param nbr int : Nombre d'unitÃ©s rÃ©ceptrices
    * @param mc boolean[][] : Matrice de connexions
    */
   static public void construitConnexionsDirectes(int nbe, boolean mc[][]) {

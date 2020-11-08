@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -25,7 +25,7 @@ public class FonctionTransfert {
    * Calcul de la fonction de transfert
    * @param type int : Type de fonction
    * @param x double : Valeur (potentiel)
-   * @param val double[] : Tableau des paramètres de la fonction
+   * @param val double[] : Tableau des paramÃ¨tres de la fonction
    * @return double : Valeur de retour
    */
   public static double calcTransfert(int type, double x, double val[]) {
@@ -45,10 +45,10 @@ public class FonctionTransfert {
   }
 
   /**
-   * Calcul de la dérivée de la fonction de transition
+   * Calcul de la dÃ©rivÃ©e de la fonction de transition
    * @param type int : Type de fonction
    * @param x double : Valeur (potentiel)
-   * @param val double[] : Tableau des paramètres de la fonction
+   * @param val double[] : Tableau des paramÃ¨tres de la fonction
    * @return double : Valeur de retour
    */
   public static double calcDerivee(int type, double x, double val[]) {
@@ -67,9 +67,9 @@ public class FonctionTransfert {
   }
 
   /**
-   * Calcul transfert linéaire : y=a.x
-   * @param x double : Valeur d'entrée
-   * @param val double[] : 1 seul paramètre, coefficient multiplicateur (a)
+   * Calcul transfert linÃ©aire : y=a.x
+   * @param x double : Valeur d'entrÃ©e
+   * @param val double[] : 1 seul paramÃ¨tre, coefficient multiplicateur (a)
    * @return double : Valeur de sortie
    */
   private static double fonctionLineaire(double x, double val[]) {
@@ -97,7 +97,7 @@ public class FonctionTransfert {
         / (Math.exp(x) + Math.exp(-1.0D * x));
   }
 
-  /** Retourne nombre de paramètres selon fonction */
+  /** Retourne nombre de paramÃ¨tres selon fonction */
   public static int getNbParametre(int typeFonction) {
     switch (typeFonction) {
       case F_LINEAIRE:
@@ -111,7 +111,7 @@ public class FonctionTransfert {
     }
   }
 
-  /** Retourne un nombre aléatoire entre 2 bornes */
+  /** Retourne un nombre alÃ©atoire entre 2 bornes */
   public static double getRandom(double min, double max) {
     if(min == 0.0D && max == 1.0D)
       return Math.random();

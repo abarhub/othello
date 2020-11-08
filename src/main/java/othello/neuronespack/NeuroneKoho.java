@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -31,7 +31,7 @@ public class NeuroneKoho extends Neurone {
   }
 
   /** Calcul du potentiel :
-   * soit distance euclidienne entre les vecteurs d'entrée et de poids */
+   * soit distance euclidienne entre les vecteurs d'entrÃ©e et de poids */
   public double calcPotentiel() {
     Synapse sy;
     double p=0.0D;

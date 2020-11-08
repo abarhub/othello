@@ -6,7 +6,7 @@ import othello.model.Controleur;
 
 /**
  * User: Barret
- * Date: 6 déc. 2009
+ * Date: 6 dÃ©c. 2009
  * Time: 09:42:04
  */
 public class JoueurHumain extends JoueurNormal {

@@ -8,7 +8,7 @@ import java.awt.geom.Point2D;
 
 /**
  * User: Barret
- * Date: 6 déc. 2009
+ * Date: 6 dÃ©c. 2009
  * Time: 13:45:05
  */
 public class Algo1 implements AlgoRecherche {

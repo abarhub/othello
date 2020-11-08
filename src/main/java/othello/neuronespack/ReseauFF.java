@@ -2,15 +2,15 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
 
 /**
- * <p>Title: Réseau Feed-Forward</p>
- * <p>Description: Gestion des réseaux Feed-Forward</p>
+ * <p>Title: RÃ©seau Feed-Forward</p>
+ * <p>Description: Gestion des rÃ©seaux Feed-Forward</p>
  */
 public abstract class ReseauFF extends Reseau {
 
@@ -18,7 +18,7 @@ public abstract class ReseauFF extends Reseau {
   private double eta;
 
   /**
-   * Constructeur du réseau
+   * Constructeur du rÃ©seau
    * @param nbC int : nombre de couches
    */
   public ReseauFF(int nbC) {
@@ -26,10 +26,10 @@ public abstract class ReseauFF extends Reseau {
   }
 
   /**
-   * Création d'une couche
+   * CrÃ©ation d'une couche
    * @param nbN int : nombre de neurones
    * @param ft int : type de fonction de transfert
-   * @param pFT int[] : paramètres de la fonction de transfert
+   * @param pFT int[] : paramÃ¨tres de la fonction de transfert
    */
   public void ajouteCouche(int nbN, int ft, double pFT[]) {
     addCouche(new CoucheFF(nbN, ft, pFT));

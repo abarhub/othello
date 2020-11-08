@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -24,7 +24,7 @@ public class CoucheKoho extends Couche {
    * @param nbNx int : Taille de la couche en x
    * @param nbNy int : Taille de la couche en y
    * @param ft int : Fonction de transfert
-   * @param pFT double[] : Paramètres de la fonction de transfert
+   * @param pFT double[] : ParamÃ¨tres de la fonction de transfert
    */
   public CoucheKoho(int nbNx, int nbNy, int ft, double pFT[]) {
     super(nbNx*nbNy, ft, pFT);
@@ -33,7 +33,7 @@ public class CoucheKoho extends Couche {
     creeNeurones();
   }
 
-  /** Crée les neurones */
+  /** CrÃ©e les neurones */
   public void creeNeurones() {
     for(int x=0; x<nbNeuronesX; x++) {
       for(int y=0; y<nbNeuronesX; y++) {

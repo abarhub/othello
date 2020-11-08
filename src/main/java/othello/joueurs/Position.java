@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
 
 /**
  * User: Barret
- * Date: 12 déc. 2009
+ * Date: 12 dÃ©c. 2009
  * Time: 12:06:38
  */
 class Position

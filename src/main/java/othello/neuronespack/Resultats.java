@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -12,8 +12,8 @@ import java.io.*;
 import java.util.*;
 
 /**
- * <p>Title: Résultats.</p>
- * <p>Description: Gestion des résultats (sorties du réseau).</p>
+ * <p>Title: RÃ©sultats.</p>
+ * <p>Description: Gestion des rÃ©sultats (sorties du rÃ©seau).</p>
  */
 public class Resultats implements GroupeUnites {
   public static String newLine = System.getProperty("line.separator");
@@ -23,13 +23,13 @@ public class Resultats implements GroupeUnites {
   private int tailleVecteurSortie;
   /** Vecteur de sortie */
   private double vecteurSortie[];
-  /** Liste de pointeurs sur les unités */
+  /** Liste de pointeurs sur les unitÃ©s */
   private Vector lesUnites;
-  /** Fichier des résultats */
+  /** Fichier des rÃ©sultats */
   private FileWriter fichierResultats;
 
   /**
-   * Constructeur : Crée un objet de gestion des sorties
+   * Constructeur : CrÃ©e un objet de gestion des sorties
    * @param tvs int : Taille du vecteur de sortie
    */
   public Resultats(int tvs) {
@@ -82,7 +82,7 @@ public class Resultats implements GroupeUnites {
       System.out.println("Erreur fichier : "+e.toString()); }
   }
 
-  /** Enregistrement des résultats dans le fichier */
+  /** Enregistrement des rÃ©sultats dans le fichier */
   public void enregistreResultats() {
     for (int i=0; i <tailleVecteurSortie; i++) {
       enregistreUnResultat(i);
@@ -112,7 +112,7 @@ public class Resultats implements GroupeUnites {
       System.out.println("Erreur fichier : "+e.toString()); }
   }
 
-  /** Getter d'une unité */
+  /** Getter d'une unitÃ© */
   public Unite getUnite(int u) {
     return (Unite) lesUnites.elementAt(u);
   }

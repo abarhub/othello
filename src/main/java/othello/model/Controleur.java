@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * User: Barret
- * Date: 6 déc. 2009
+ * Date: 6 dÃ©c. 2009
  * Time: 09:45:13
  */
 public class Controleur implements CliqueListener {
@@ -151,7 +151,7 @@ public class Controleur implements CliqueListener {
 		//assert (isDemarrer());
 		//assert(joueur_joue!= joueur_courant);
 		traite_clique=false;
-		log.info("Joueur n°"+joueur_joue+" de jouer ("+ liste_joueurs[joueur_joue].getCouleur()+")");
+		log.info("Joueur nÂ°"+joueur_joue+" de jouer ("+ liste_joueurs[joueur_joue].getCouleur()+")");
 		//cadrillage.removeListener(liste_joueurs[joueur_courant]);
 		temps=System.currentTimeMillis();
 		duree=temps-debut_temps;
@@ -274,7 +274,7 @@ public class Controleur implements CliqueListener {
 			}
 			else
 			{
-				s+="Joueur n°"+n+":";
+				s+="Joueur nÂ°"+n+":";
 			}
 			total=0L;
 			for(long tmp:liste)

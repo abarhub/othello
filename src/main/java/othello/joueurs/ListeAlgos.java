@@ -5,7 +5,7 @@ import othello.model.Couleurs;
 
 /**
  * User: Barret
- * Date: 6 déc. 2009
+ * Date: 6 dÃ©c. 2009
  * Time: 17:10:56
  */
 public enum ListeAlgos {

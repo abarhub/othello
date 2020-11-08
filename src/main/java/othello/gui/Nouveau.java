@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * User: Barret
- * Date: 6 déc. 2009
+ * Date: 6 dÃ©c. 2009
  * Time: 16:39:06
  */
 public class Nouveau extends JDialog implements ActionListener {

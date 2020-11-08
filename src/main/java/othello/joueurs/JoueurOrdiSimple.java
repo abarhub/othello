@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 /**
  * User: Barret
- * Date: 6 déc. 2009
+ * Date: 6 dÃ©c. 2009
  * Time: 11:01:25
  */
 public class JoueurOrdiSimple extends JoueurNormal implements Runnable {
@@ -43,12 +43,12 @@ public class JoueurOrdiSimple extends JoueurNormal implements Runnable {
 			{
 				no_ligne= (int) point.getX();
 				no_colonne = (int) point.getY();
-				log.info("Trouvé : "+ no_ligne+","+ no_colonne);
+				log.info("TrouvÃ© : "+ no_ligne+","+ no_colonne);
 				setChoixCase(no_ligne, no_colonne);
 			}
 			else
 			{
-				log.info("Pas trouvé de solution");
+				log.info("Pas trouvÃ© de solution");
 			}
 		}
 	}

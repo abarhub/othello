@@ -2,7 +2,7 @@ package othello.joueurs;
 
 /**
  * User: Barret
- * Date: 10 déc. 2009
+ * Date: 10 dÃ©c. 2009
  * Time: 22:02:43
  */
 public class Couple {

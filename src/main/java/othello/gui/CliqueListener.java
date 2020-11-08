@@ -2,7 +2,7 @@ package othello.gui;
 
 /**
  * User: Barret
- * Date: 5 déc. 2009
+ * Date: 5 dÃ©c. 2009
  * Time: 18:11:02
  */
 public interface CliqueListener {

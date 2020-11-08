@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -12,8 +12,8 @@ import java.util.*;
 
 /**
  *
- * <p>Title: Groupe d'unités</p>
- * <p>Description: Interface de gestion des groupes d'unités.</p>
+ * <p>Title: Groupe d'unitÃ©s</p>
+ * <p>Description: Interface de gestion des groupes d'unitÃ©s.</p>
  */
 interface GroupeUnites {
   public Vector getLesUnites();

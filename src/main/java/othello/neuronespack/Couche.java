@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -22,14 +22,14 @@ public abstract class Couche implements GroupeUnites {
   private Vector lesUnites;
   /** type fonction transfert */
   private int typeFT;
-  /** paramètres de la fonction de transfert */
+  /** paramÃ¨tres de la fonction de transfert */
   private double paramFT[];
 
   /**
    * Constructeur de la couche
    * @param nbN int : Nombre de neurones
    * @param ft int : Fonction de transfert
-   * @param pFT double[] : Paramètres de la fonction de transfert
+   * @param pFT double[] : ParamÃ¨tres de la fonction de transfert
    */
   public Couche(int nbN, int ft, double pFT[]) {
     int nbParamFT = FonctionTransfert.getNbParametre(typeFT);
@@ -67,7 +67,7 @@ public abstract class Couche implements GroupeUnites {
     return typeFT;
   }
 
-  /** Getter des paramètres de la fonction de transfert */
+  /** Getter des paramÃ¨tres de la fonction de transfert */
   public double[] getParamFT() {
     return paramFT;
   }

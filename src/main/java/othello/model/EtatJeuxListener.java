@@ -4,7 +4,7 @@ import othello.joueurs.Joueur;
 
 /**
  * User: Barret
- * Date: 9 déc. 2009
+ * Date: 9 dÃ©c. 2009
  * Time: 21:53:40
  */
 public interface EtatJeuxListener {

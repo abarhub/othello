@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class Biais extends UniteExterne implements GroupeUnites {
 
-  /** Pointeur sur les unités (le biais) */
+  /** Pointeur sur les unitÃ©s (le biais) */
   private Vector lesUnites;
 
   /**
@@ -30,22 +30,22 @@ public class Biais extends UniteExterne implements GroupeUnites {
     setSignalCourant(-1.0D);
   }
 
-  /** Force le signal à -1 */
+  /** Force le signal Ã  -1 */
   public void setSignalCourant(double v) {
     super.setSignalCourant(-1.0D);
   }
 
-  /** Getter d'une unité */
+  /** Getter d'une unitÃ© */
   public Unite getUnite(int u) {
     return (Unite) lesUnites.elementAt(0);
   }
 
-  /** Getter des unités */
+  /** Getter des unitÃ©s */
   public Vector getLesUnites() {
     return lesUnites;
   }
 
-  /** Getter du nombre d'unités */
+  /** Getter du nombre d'unitÃ©s */
   public int getNbUnites() {
     return 1;
   }

@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -11,8 +11,8 @@ package othello.neuronespack;
 import java.util.*;
 
 /**
- * <p>Title: Réseau</p>
- * <p>Description: Gestion des fonctions de base d'un réseau.</p>
+ * <p>Title: RÃ©seau</p>
+ * <p>Description: Gestion des fonctions de base d'un rÃ©seau.</p>
  */
 public abstract class Reseau {
   public static int CNX_ENTREE = 0;
@@ -26,15 +26,15 @@ public abstract class Reseau {
   private Vector lesCouches;
   /** Liste des connexions */
   private Vector lesConnexions;
-  /** Données courantes */
+  /** DonnÃ©es courantes */
   private DonneesEntree donneesCourantes;
-  /** Données de résultats */
+  /** DonnÃ©es de rÃ©sultats */
   private Resultats lesResultats;
   /** Biais */
   private Biais leBiais;
 
   /**
-   * Constructeur du réseau
+   * Constructeur du rÃ©seau
    * @param nbC int : nombre de couches
    */
   public Reseau(int nbC) {
@@ -54,9 +54,9 @@ public abstract class Reseau {
   }
 
   /**
-   * Construction des connexions d'entrées
+   * Construction des connexions d'entrÃ©es
    * @param mc boolean[][] : Matrice des connexions
-   * @return Connexions : Objet Connexions créé
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions construitConnexionsEntrees(boolean mc[][]) {
     Connexions connexion = ajouteConnexionsEntrees(donneesCourantes,
@@ -66,12 +66,12 @@ public abstract class Reseau {
   }
 
   /**
-   * Construction des connexions directes d'entrées
-   * @return Connexions : Objet Connexions créé
+   * Construction des connexions directes d'entrÃ©es
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions construitConnexionsEntreesDirectes() {
-    int nbe; // Nombre d'unités émettrices
-    int nbr; // Nombre d'unités réceptrices
+    int nbe; // Nombre d'unitÃ©s Ã©mettrices
+    int nbr; // Nombre d'unitÃ©s rÃ©ceptrices
     boolean mc[][]; // Matrice de connexion
     nbe = donneesCourantes.getTailleVecteurEntree();
     nbr = getCouche(0).getNbUnites();
@@ -81,11 +81,11 @@ public abstract class Reseau {
   }
 
   /**
-   * Ajout des connexions d'entrée
-   * @param dataE GroupeUnites : Ensemble des unités d'origine
-   * @param c GroupeUnites : Ensemble des unités de destination
+   * Ajout des connexions d'entrÃ©e
+   * @param dataE GroupeUnites : Ensemble des unitÃ©s d'origine
+   * @param c GroupeUnites : Ensemble des unitÃ©s de destination
    * @param mc boolean[][] : Matrice des connexions
-   * @return Connexions : Objet Connexions créé
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions ajouteConnexionsEntrees(GroupeUnites dataE, GroupeUnites c,
                                       boolean mc[][]) {
@@ -97,7 +97,7 @@ public abstract class Reseau {
   /**
    * Construction des connexions de sorties
    * @param mc boolean[][] : Matrice des connexions
-   * @return Connexions : Objet Connexions créé
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions construitConnexionsSorties(boolean mc[][]) {
     Connexions connexion = ajouteConnexionsSorties(
@@ -108,11 +108,11 @@ public abstract class Reseau {
 
   /**
    * Construction des connexions directes de sorties
-   * @return Connexions : Objet Connexions créé
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions construitConnexionsSortiesDirectes() {
-    int nbe; // Nombre d'unités émettrices
-    int nbr; // Nombre d'unités réceptrices
+    int nbe; // Nombre d'unitÃ©s Ã©mettrices
+    int nbr; // Nombre d'unitÃ©s rÃ©ceptrices
     nbe = getCouche(nbCouches-1).getNbUnites();
     nbr = lesResultats.getNbUnites();
     boolean mc[][] = new boolean[nbe][nbr];
@@ -122,10 +122,10 @@ public abstract class Reseau {
 
   /**
    * Ajoute des connexions de sortie
-   * @param c GroupeUnites : Ensemble des unités d'origine
-   * @param dataR GroupeUnites : Ensemble des unités de destination
+   * @param c GroupeUnites : Ensemble des unitÃ©s d'origine
+   * @param dataR GroupeUnites : Ensemble des unitÃ©s de destination
    * @param mc boolean[][] : Matrice des connexions
-   * @return Connexions : Objet Connexions créé
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions ajouteConnexionsSorties(GroupeUnites c, GroupeUnites dataR,
                                       boolean mc[][]) {
@@ -136,10 +136,10 @@ public abstract class Reseau {
 
   /**
    * Construction des connexions entre deux couches
-   * @param c1 GroupeUnites : Ensemble des unités d'origine
-   * @param c2 GroupeUnites : Ensemble des unités de destination
+   * @param c1 GroupeUnites : Ensemble des unitÃ©s d'origine
+   * @param c2 GroupeUnites : Ensemble des unitÃ©s de destination
    * @param mc boolean[][] : Matrice des connexions
-   * @return Connexions : Objet Connexions créé
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions construitConnexionsCouches(
     GroupeUnites c1, GroupeUnites c2, boolean mc[][]) {
@@ -149,14 +149,14 @@ public abstract class Reseau {
   }
 
   /**
-   * Construction de connexions complètes entre deux couches
-   * @param c1 GroupeUnites : Ensemble des unités d'origine
-   * @param c2 GroupeUnites : Ensemble des unités de destination
-   * @return Connexions : Objet Connexions créé
+   * Construction de connexions complÃ¨tes entre deux couches
+   * @param c1 GroupeUnites : Ensemble des unitÃ©s d'origine
+   * @param c2 GroupeUnites : Ensemble des unitÃ©s de destination
+   * @return Connexions : Objet Connexions crÃ©Ã©
    */
   public Connexions construitConnexionsCouchesComplete(GroupeUnites c1, GroupeUnites c2) {
-    int nbe; // Nombre d'unités émettrices
-    int nbr; // Nombre d'unités réceptrices
+    int nbe; // Nombre d'unitÃ©s Ã©mettrices
+    int nbr; // Nombre d'unitÃ©s rÃ©ceptrices
     boolean mc[][]; // Matrice des connexions
     nbe = c1.getNbUnites();
     nbr = c2.getNbUnites();
@@ -170,7 +170,7 @@ public abstract class Reseau {
    * @param c1 CoucheBase : Couche d'origine
    * @param c2 CoucheBase : Couche de destination
    * @param mc boolean[][] : Matrice de connexions
-   * @return ConnexionsCouches : Connexion créée
+   * @return ConnexionsCouches : Connexion crÃ©Ã©e
    */
   public Connexions ajouteConnexionsCouches(GroupeUnites c1,
                                       GroupeUnites c2, boolean mc[][]) {
@@ -192,7 +192,7 @@ public abstract class Reseau {
 
   /**
    * Ajoute les connexions de biais
-   * @param couche CoucheMP : Couche concernée
+   * @param couche CoucheMP : Couche concernÃ©e
    * @param val double[] : Valeurs des biais (seuils) par neurone
    */
   public void ajouteConnexionsBiais(Couche couche, double val[]) {
@@ -243,35 +243,35 @@ public abstract class Reseau {
   }
 
   /**
-   * Construit l'objet données courantes
-   * @param tve int : Taille du vecteur d'entrée
-   * @param tvs int : Taille du vecteur de sortie désirées
+   * Construit l'objet donnÃ©es courantes
+   * @param tve int : Taille du vecteur d'entrÃ©e
+   * @param tvs int : Taille du vecteur de sortie dÃ©sirÃ©es
    */
   public void setDonneesCourantes(int tve, int tvs) {
     donneesCourantes = new DonneesEntree(tve, tvs);
   }
 
-  /** Getter des données courantes */
+  /** Getter des donnÃ©es courantes */
   public DonneesEntree getDonneesCourantes() {
     return donneesCourantes;
   }
 
   /**
-   * Construit l'objet résultat
-   * @param tvr int : Taille du vecteur résultat (sortie)
+   * Construit l'objet rÃ©sultat
+   * @param tvr int : Taille du vecteur rÃ©sultat (sortie)
    */
   public void setResultat(int tvr) {
     lesResultats =  new Resultats(tvr);
   }
 
-  /** Getter des résultats */
+  /** Getter des rÃ©sultats */
   public Resultats getResultats() {
     return lesResultats;
   }
 
   /**
-   * Connecte un fichier d'entrée
-   * @param pat Patterns : Objet Patterns concerné
+   * Connecte un fichier d'entrÃ©e
+   * @param pat Patterns : Objet Patterns concernÃ©
    * @param nomfic String : Nom du fichier
    */
   public void setFichierEntree(DonneesEntree de, String nomFic) {
@@ -279,8 +279,8 @@ public abstract class Reseau {
   }
 
   /**
-   * Connecte un fichier de résultats (sorties)
-   * @param res Resultats : Objet Résultats concerné
+   * Connecte un fichier de rÃ©sultats (sorties)
+   * @param res Resultats : Objet RÃ©sultats concernÃ©
    * @param nomFic String : Nom du fichier
    */
   public void setFichierResultat(Resultats res, String nomFic) {
@@ -288,6 +288,6 @@ public abstract class Reseau {
   }
 
 // *********************************************************************
-  /** traitement du réseau */
+  /** traitement du rÃ©seau */
   public abstract void propagation();
 }

@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -18,9 +18,9 @@ public abstract class Neurone implements Unite {
   public static final int VALEUR_SIGNAL = 0;
   public static final int VALEUR_POTENTIEL = 1;
 
-  /** Dimension du tableau des paramètres */
+  /** Dimension du tableau des paramÃ¨tres */
   private int nbParametresNeurone;
-  /** Paramètres du neurone */
+  /** ParamÃ¨tres du neurone */
   private double parametreNeurone[];
   /** Nombre de synapses entrantes */
   private int nbSynapsesIn;
@@ -39,7 +39,7 @@ public abstract class Neurone implements Unite {
    * Constructeur du neurone
    * @param c Couche : Couche contenant le neurone
    * @param Id int : Identifiant du neurone
-   * @param nbp int : Nombre de paramètres du neurone
+   * @param nbp int : Nombre de paramÃ¨tres du neurone
    */
   public Neurone(Couche c, int Id, int nbp) {
     maCouche=c;
@@ -124,12 +124,12 @@ public abstract class Neurone implements Unite {
     return idNeurone;
   }
 
-  /** Getter d'un paramètre */
+  /** Getter d'un paramÃ¨tre */
   public double getParametreNeurone(int n) {
     return parametreNeurone[n];
   }
 
-  /** Setter d'un paramètre */
+  /** Setter d'un paramÃ¨tre */
   public void setParametreNeurone(int n, double v) {
     parametreNeurone[n] = v;
   }

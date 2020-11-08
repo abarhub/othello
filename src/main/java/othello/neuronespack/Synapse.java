@@ -2,23 +2,23 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
 
 /**
  * <p>Title: Synapse</p>
- * <p>Description: Gestion des synapses (liens entre unités).</p>
+ * <p>Description: Gestion des synapses (liens entre unitÃ©s).</p>
  */
 public class Synapse {
 
   /** Connexions */
   private Connexions maConnexion;
-  /** Unité d'origine */
+  /** UnitÃ© d'origine */
   private Unite uniteOrigine;
-  /** Unité de destination */
+  /** UnitÃ© de destination */
   private Unite uniteDestination;
 
   /** Constructeur d'une synapse dans une connexion */
@@ -55,12 +55,12 @@ public class Synapse {
     return maConnexion;
   }
 
-  /** Getter de l'unité d'origine */
+  /** Getter de l'unitÃ© d'origine */
   public Unite getUniteOrigine() {
     return uniteOrigine;
   }
 
-  /** Getter de l'unité de destination */
+  /** Getter de l'unitÃ© de destination */
   public Unite getUniteDestination() {
     return uniteDestination;
   }
@@ -71,22 +71,22 @@ public class Synapse {
   }
 
   /**
-   * Connexion des deux Unités
-   * @param uOrig EntreeSortie : Unité d'origine
-   * @param uDest EntreeSortie : Unité de destination
+   * Connexion des deux UnitÃ©s
+   * @param uOrig EntreeSortie : UnitÃ© d'origine
+   * @param uDest EntreeSortie : UnitÃ© de destination
    */
   public void connecteUniteDeA(Unite uOrig, Unite uDest) {
     setUniteOrigine(uOrig);
     setUniteDestination(uDest);
   }
 
-  /** Fixe l'unité d'origine */
+  /** Fixe l'unitÃ© d'origine */
   private void setUniteOrigine(Unite l) {
       uniteOrigine = l;
       l.addSynapsesOut(this);
   }
 
-  /** Fixe l'unité de destination */
+  /** Fixe l'unitÃ© de destination */
   private void setUniteDestination(Unite l) {
       uniteDestination = l;
       l.addSynapsesIn(this);

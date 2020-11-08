@@ -2,15 +2,15 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
 
 /**
- * <p>Title: Réseau backprop</p>
- * <p>Description: Gestion des réseaux backprop.</p>
+ * <p>Title: RÃ©seau backprop</p>
+ * <p>Description: Gestion des rÃ©seaux backprop.</p>
  */
 public class ReseauBP extends ReseauFF {
 
@@ -18,7 +18,7 @@ public class ReseauBP extends ReseauFF {
   private double momentum;
 
   /**
-   * Constructeur du réseau
+   * Constructeur du rÃ©seau
    * @param nbC int : Nombre de couches
    */
   public ReseauBP(int nbC) {
@@ -28,10 +28,10 @@ public class ReseauBP extends ReseauFF {
   }
 
   /**
-   * Construit un réseau BP selon paramètres
+   * Construit un rÃ©seau BP selon paramÃ¨tres
    * @param paramReseau int[] : Nombre de neurones pour chaque couche
    * @param fonction int : Fonction de transfert
-   * @param paramFT double[] : Paramètres de la fonction de transfert
+   * @param paramFT double[] : ParamÃ¨tres de la fonction de transfert
    */
   public void construitReseau(int paramReseau[], int fonction,
                               double paramFT[]) {
@@ -40,10 +40,10 @@ public class ReseauBP extends ReseauFF {
   }
 
   /**
-   * Construit un réseau BP selon paramètres
+   * Construit un rÃ©seau BP selon paramÃ¨tres
    * @param paramReseau int[] : Nombre de neurones pour chaque couche
    * @param fonction int : Fonction de transfert
-   * @param paramFT double[] : Paramètres de la fonction de transfert
+   * @param paramFT double[] : ParamÃ¨tres de la fonction de transfert
    * @param vb double[][] : Valeurs des biais (seuils) par couche et par neurone
    */
   public void construitReseau(int paramReseau[], int fonction,
@@ -57,7 +57,7 @@ public class ReseauBP extends ReseauFF {
    * Construit les couches
    * @param paramReseau int[] : Nombre de neurones pour chaque couche
    * @param fonction int : Fonction de transfert
-   * @param paramFT double[]Paramètres de la fonction de transfert
+   * @param paramFT double[]ParamÃ¨tres de la fonction de transfert
    */
   private void construitLesCouches(int paramReseau[], int fonction,
                                    double paramFT[]) {
@@ -96,8 +96,8 @@ public class ReseauBP extends ReseauFF {
 
   /**
    * Calcul des signaux d'erreurs sur la couche de sortie
-   * @param couche CoucheFF : couche à traiter
-   * @return double : Erreur totale sur la couche (0.5 carré des écarts)
+   * @param couche CoucheFF : couche Ã  traiter
+   * @return double : Erreur totale sur la couche (0.5 carrÃ© des Ã©carts)
    */
   public double calcErreurSortie(CoucheFF couche) {
     double err = 0.0D;
@@ -114,7 +114,7 @@ public class ReseauBP extends ReseauFF {
     return err * 0.5D;
   }
 
-  /** Calcul des signaux d'erreurs sur les couches cachées */
+  /** Calcul des signaux d'erreurs sur les couches cachÃ©es */
   public void calcErreurCachee(CoucheFF couche) {
     NeuroneFF neurone;
     for(int i=0; i<couche.getNbUnites(); i++) {

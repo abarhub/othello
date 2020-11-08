@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 /**
  * User: Barret
- * Date: 5 déc. 2009
+ * Date: 5 dÃ©c. 2009
  * Time: 15:13:19
  */
 public class Main {
@@ -60,7 +60,7 @@ public class Main {
 	    jeux=new JeuxAuto(ListeAlgos.Simple1,ListeAlgos.AlphaBeta2);
         jeux.demarrage();
         //fin=System.currentTimeMillis();
-        //log.info("Durée : "+(fin-debut)+"("+conv(fin-debut)+")");
+        //log.info("DurÃ©e : "+(fin-debut)+"("+conv(fin-debut)+")");
         try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {

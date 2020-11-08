@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -13,39 +13,39 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Gestion des données d'apprentissage et de test.
- * Pour les fichiers, la première ligne contient :
- * type (apprend/test); nombre de vecteurs d'entrée; taille de ces vecteurs;
+ * Gestion des donnÃ©es d'apprentissage et de test.
+ * Pour les fichiers, la premiÃ¨re ligne contient :
+ * type (apprend/test); nombre de vecteurs d'entrÃ©e; taille de ces vecteurs;
  * nombre de vecteurs de sortie; taille de ces vecteurs
  * Les lignes suivantes contiennent :
- * les scalaires des vecteurs d'entrée suivis des sorties désirées (si apprend)
+ * les scalaires des vecteurs d'entrÃ©e suivis des sorties dÃ©sirÃ©es (si apprend)
  */
 
 /**
- * <p>Title: Données d'entrée</p>
- * <p>Description: Gestion des données d'entrée.</p>
+ * <p>Title: DonnÃ©es d'entrÃ©e</p>
+ * <p>Description: Gestion des donnÃ©es d'entrÃ©e.</p>
  */
 public class DonneesEntree implements GroupeUnites {
   public static final char SEPARATEUR = ';';
 
-  /** taille des vecteurs d'entrée */
+  /** taille des vecteurs d'entrÃ©e */
   private int tailleVecteurEntree;
-  /** Vecteur d'entrée courante */
+  /** Vecteur d'entrÃ©e courante */
   private double vecteurEntree[];
   /** taille des vecteurs de sortie */
   private int tailleVecteurSortie;
-  /** Vecteur sortie désiré */
+  /** Vecteur sortie dÃ©sirÃ© */
   private double vecteurSortieDesire[];
-  /** Liste de pointeurs sur les unités */
+  /** Liste de pointeurs sur les unitÃ©s */
   private Vector lesUnites;
-  /** Fichier d'entrée */
+  /** Fichier d'entrÃ©e */
   protected FileReader fichierEntrees;
   /** Position courante dans le fichier */
   private int posCrt;
 
   /**
-   * Constructeur : Crée un objet de gestion des entrées
-   * @param tve int Taille vecteur entrée
+   * Constructeur : CrÃ©e un objet de gestion des entrÃ©es
+   * @param tve int Taille vecteur entrÃ©e
    * @param tvs int Taille vecteur sortie
    */
   public DonneesEntree(int tve, int tvs) {
@@ -60,7 +60,7 @@ public class DonneesEntree implements GroupeUnites {
     vecteurSortieDesire = new double[tailleVecteurSortie];
   }
 
-  /** Mise à jour du vecteur d'entrée courant */
+  /** Mise Ã  jour du vecteur d'entrÃ©e courant */
   public void setVecteurEntree(double e[]) {
     for(int i=0; i<tailleVecteurEntree; i++) {
       vecteurEntree[i] = e[i];
@@ -68,7 +68,7 @@ public class DonneesEntree implements GroupeUnites {
     }
   }
 
-  /** Getter du vecteur d'entrée */
+  /** Getter du vecteur d'entrÃ©e */
   public double[] getVecteurEntree() {
     return vecteurEntree;
   }
@@ -78,12 +78,12 @@ public class DonneesEntree implements GroupeUnites {
     return vecteurEntree[i];
   }
 
-  /** Getter taille vecteur d'entrée */
+  /** Getter taille vecteur d'entrÃ©e */
   public int getTailleVecteurEntree() {
     return tailleVecteurEntree;
   }
 
-  /** Connecte un fichier d'entrée */
+  /** Connecte un fichier d'entrÃ©e */
   public void setFichierEntree(String nomFic) {
     if(fichierEntrees != null) {
       fermeFichierDonnees();
@@ -94,19 +94,19 @@ public class DonneesEntree implements GroupeUnites {
       System.out.println("Erreur fichier : "+e.toString()); }
   }
 
-  /** Mise à jour du vecteur de sortie désiré courant */
+  /** Mise Ã  jour du vecteur de sortie dÃ©sirÃ© courant */
   public void setVecteurSortieDesire(double e[]) {
     for(int i=0; i<tailleVecteurSortie; i++) {
       vecteurSortieDesire[i] = e[i];
     }
   }
 
-  /** Getter du vecteur de sortie désiré */
+  /** Getter du vecteur de sortie dÃ©sirÃ© */
   public double[] getVecteurSortieDesiree() {
     return vecteurSortieDesire;
   }
 
-  /** Getter d'une valeur de sortie désirée */
+  /** Getter d'une valeur de sortie dÃ©sirÃ©e */
   public double getValeurSortieDesiree(int i) {
     return vecteurSortieDesire[i];
   }
@@ -127,7 +127,7 @@ public class DonneesEntree implements GroupeUnites {
     litVecteurSortieDesire();
   }
 
-  /** Lecture du vecteur d'entrée dans le fichier */
+  /** Lecture du vecteur d'entrÃ©e dans le fichier */
   private void litVecteurEntree() {
     posCrt++;
     for(int i=0; i<tailleVecteurEntree; i++) {
@@ -136,7 +136,7 @@ public class DonneesEntree implements GroupeUnites {
     }
   }
 
-  /** Lecture du vecteur de sortie désiré dans le fichier */
+  /** Lecture du vecteur de sortie dÃ©sirÃ© dans le fichier */
   private void litVecteurSortieDesire() {
     for(int i=0; i<tailleVecteurSortie; i++) {
       vecteurSortieDesire[i] = litVal();
@@ -160,7 +160,7 @@ public class DonneesEntree implements GroupeUnites {
     return Double.valueOf(s).doubleValue();
   }
 
-  /** Retourne au début du fichier */
+  /** Retourne au dÃ©but du fichier */
   private void reInitFichier() {
     try {
       fichierEntrees.reset();
@@ -177,17 +177,17 @@ public class DonneesEntree implements GroupeUnites {
       System.out.println("Erreur fichier : "+e.toString()); }
   }
 
-  /** Getter d'une unité */
+  /** Getter d'une unitÃ© */
   public Unite getUnite(int u) {
     return (Unite) lesUnites.elementAt(u);
   }
 
-  /** Getter des unités */
+  /** Getter des unitÃ©s */
   public Vector getLesUnites() {
     return lesUnites;
   }
 
-  /** Getter du nombre d'unités */
+  /** Getter du nombre d'unitÃ©s */
   public int getNbUnites() {
     return tailleVecteurEntree;
   }

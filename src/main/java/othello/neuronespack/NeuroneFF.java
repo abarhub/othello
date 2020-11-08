@@ -2,8 +2,8 @@ package othello.neuronespack;
 
 /**
  * Package Neurones
- * Fonctionalités de base des réseaux neuronaux.
- * Réseaux Neauronaux, Vuibert 2006.
+ * FonctionalitÃ©s de base des rÃ©seaux neuronaux.
+ * RÃ©seaux Neauronaux, Vuibert 2006.
  * Jean-Philippe Rennard
  * version 1.0, 17/3/2006
  */
@@ -32,7 +32,7 @@ public class NeuroneFF extends Neurone {
 
   /**
    * Calcul du signal d'erreur sur la couche de sortie
-   * @param valDes double : Valeur de sortie désirée
+   * @param valDes double : Valeur de sortie dÃ©sirÃ©e
    */
   public void calcSignalErreurSortie(double valDes) {
     setParametreNeurone(NeuroneFF.VALEUR_SIGNAL_ERREUR,
@@ -42,7 +42,7 @@ public class NeuroneFF extends Neurone {
                                         getMaCouche().getParamFT()));
   }
 
-  /** Calcul des signaux d'erreur d'un neurone caché */
+  /** Calcul des signaux d'erreur d'un neurone cachÃ© */
   public void calcSignalErreurCache() {
     Synapse sy;
     double p=0.0D;
