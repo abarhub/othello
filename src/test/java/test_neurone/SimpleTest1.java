@@ -12,28 +12,28 @@ import othello.neuronespack.FonctionTransfert;
  */
 public class SimpleTest1 extends ReseauBP {
     /**
-     * <p>Title: Réseau BP reconnaissance chiffres</p>
-     * <p>Description: Réseau BP pour la reconnaissance de chiffres.</p>
+     * <p>Title: RÃ©seau BP reconnaissance chiffres</p>
+     * <p>Description: RÃ©seau BP pour la reconnaissance de chiffres.</p>
      */
     //public class ReseauBPRecChiffre extends ReseauBP {
       public static final int NON_RECONNU = -1;
-      // Paramètres par défaut
+      // ParamÃ¨tres par dÃ©faut
       public static int NB_COUCHES_CACHEES = 1;
       public static int[] TAILLE_COUCHES_CACHEES = {10};
       public static double ETA = 0.9D;
       public static double MOMENT = 0.7D;
       public static int MAX_NEURONES = 25;
-      /** Itération */
+      /** ItÃ©ration */
       static int it;
 
       /** Pointeur sur processus */
       //BPRecChiffreProcess processBP;
-      /** Nb maximum d'itérations autorisées */
+      /** Nb maximum d'itÃ©rations autorisÃ©es */
       int maxIteration = 10000;
       /** Seuil de convergence (erreur totale acceptable) */
       double seuilConvergence = 0.01D;
 
-      /** Tableau des données d'apprentissage */
+      /** Tableau des donnÃ©es d'apprentissage */
       double[][] donneesApprentissage = {
             {
             1.0D, 1.0D, 1.0D, 1.0D, 1.0D, 1.0D, 0.0D}  //0
@@ -69,7 +69,7 @@ public class SimpleTest1 extends ReseauBP {
             1.0D, 0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D}  //F
         };
 
-      /** Construit le réseau au sein d'un processus */
+      /** Construit le rÃ©seau au sein d'un processus */
       public SimpleTest1(/*BPRecChiffreProcess p,*/ int nbcc, int[] tailleCouches
                                 , double eta, double moment) {
         super(nbcc + 2);
@@ -110,7 +110,7 @@ public class SimpleTest1 extends ReseauBP {
         return NON_RECONNU;
       }
 
-      /** Itération. Renvoie valeur d'erreur. */
+      /** ItÃ©ration. Renvoie valeur d'erreur. */
       public double iteration() {
         double err = 0.0D;
         double[] entree = new double[7];

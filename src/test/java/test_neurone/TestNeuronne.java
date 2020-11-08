@@ -54,7 +54,7 @@ public class TestNeuronne {
         {
             tab=tmp.donneesApprentissage[j];
             r=tmp.reconnaissance(tab);
-            System.out.println("Résultat :"+r);
+            System.out.println("RÃ©sultat :"+r);
         }
         //affiche2(tmp);
     }
@@ -66,7 +66,7 @@ public class TestNeuronne {
         tmp.getDonneesCourantes().setVecteurEntree(tab);
         tmp.propagation();
         Resultats res= tmp.getResultats();
-        System.out.println("Résultat :");
+        System.out.println("RÃ©sultat :");
         for(int i=0;i<res.getTailleVecteurSortie();i++)
         {
             System.out.println(res.getValeurSortie(i));
@@ -82,7 +82,7 @@ public class TestNeuronne {
         //tmp.getDonneesCourantes().setVecteurEntree(tab);
         //tmp.propagation();
         //Resultats res= tmp.getResultats();
-        System.out.println("Résultat :"+i);
+        System.out.println("RÃ©sultat :"+i);
         /*for(int i=0;i<res.getTailleVecteurSortie();i++)
         {
             System.out.println(res.getValeurSortie(i));
@@ -127,7 +127,7 @@ public class TestNeuronne {
 	    log.info("apprentissage...");
         tmp.apprentissage(tmp2,tmp3);
 	    log.info("fin de l'apprentissage");
-	    log.info("test du résultat...");
+	    log.info("test du rÃ©sultat...");
 	    for(int i=0;i<entree2.size();i++)
 	    {
 		    liste=entree2.get(i);
@@ -139,7 +139,7 @@ public class TestNeuronne {
 	        res=tmp.reconnaissance(tmp4);
 		    log.info("res="+res);
 	    }
-	    log.info("fin du test du résultat");
+	    log.info("fin du test du rÃ©sultat");
     }
 
     private static double[][] conv(List<List<Double>> liste) {
@@ -176,7 +176,7 @@ public class TestNeuronne {
 	        jeux.setEnregistre(true);
 			jeux.demarrage();
             //fin=System.currentTimeMillis();
-            //log.info("Durée : "+(fin-debut)+"("+conv(fin-debut)+")");
+            //log.info("DurÃ©e : "+(fin-debut)+"("+conv(fin-debut)+")");
             try {
                  Thread.sleep(5);
              } catch (InterruptedException e) {
@@ -301,10 +301,10 @@ public class TestNeuronne {
         {
             tab=tmp.donneesApprentissage[j];
             r=tmp.reconnaissance(tab);
-            System.out.println("Résultat :"+r);
+            System.out.println("RÃ©sultat :"+r);
         }*/
 		r=tmp.reconnaissance(tab);
-		System.out.println("Résultat :"+r);
+		System.out.println("RÃ©sultat :"+r);
         //affiche2(tmp);
     }
 

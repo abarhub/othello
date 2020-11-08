@@ -17,18 +17,18 @@ public class SimpleTest2 extends ReseauBP {
 	public static Logger log = Logger.getLogger("test_neurone.SimpleTest2");
 
     public static final int NON_RECONNU = -1;
-      // Paramètres par défaut
+      // ParamÃ¨tres par dÃ©faut
       public static int NB_COUCHES_CACHEES = 1;
       //public static int[] TAILLE_COUCHES_CACHEES = {10};
       public static double ETA = 0.9D;
       public static double MOMENT = 0.7D;
       public static int MAX_NEURONES = 25;
-      /** Itération */
+      /** ItÃ©ration */
       static int it;
 
       /** Pointeur sur processus */
       //BPRecChiffreProcess processBP;
-      /** Nb maximum d'itérations autorisées */
+      /** Nb maximum d'itÃ©rations autorisÃ©es */
       int maxIteration = 10000;
       /** Seuil de convergence (erreur totale acceptable) */
       double seuilConvergence = 0.01D;
@@ -104,7 +104,7 @@ public class SimpleTest2 extends ReseauBP {
         return NON_RECONNU;
       }
 
-      /** Itération. Renvoie valeur d'erreur. */
+      /** ItÃ©ration. Renvoie valeur d'erreur. */
       public double iteration(double[][] donneesApprentissage,double[][] donneesSortie) {
           assert(donneesApprentissage!=null);
           assert(donneesApprentissage.length>0);
