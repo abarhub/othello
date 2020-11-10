@@ -20,3 +20,17 @@ Pour le test d'un réseau de neuronne, j'ai utilisé le livre ['Réseaux neurona
 de Jean-Philippe Rennard Vuibert, 2006 ISBN 2-717-4830-8 [Amazone](https://www.amazon.fr/R%C3%A9seaux-neuronaux-introduction-accompagn%C3%A9e-mod%C3%A8le/dp/2711748308)
 C'est un bon livre qui explique bien les réseaux de neuronne.
 
+Les IA implémenté sont :
+* Simple 1 : Recherche de la première case de disponible en commencant par en haut à gauche
+* Simple 2 : Recherche de la case disponible qui mange le plus de cases
+* Simple 3 : Recherche de la case disponible qui mange le plus de cases (autre methode de calcul)
+* MinMax 1 : [Algorithme MinMax](https://fr.wikipedia.org/wiki/Algorithme_minimax) de profondeur 1
+* MinMax 2 : [Algorithme MinMax](https://fr.wikipedia.org/wiki/Algorithme_minimax) de profondeur 2
+* MinMax 3 : [Algorithme MinMax](https://fr.wikipedia.org/wiki/Algorithme_minimax) de profondeur 3
+* AlphaBeta 1 : [Algorithme Alpha-Beta](https://fr.wikipedia.org/wiki/%C3%89lagage_alpha-b%C3%AAta) de profondeur 1
+* AlphaBeta 2 : [Algorithme Alpha-Beta](https://fr.wikipedia.org/wiki/%C3%89lagage_alpha-b%C3%AAta) de profondeur 2
+* AlphaBeta 3 : [Algorithme Alpha-Beta](https://fr.wikipedia.org/wiki/%C3%89lagage_alpha-b%C3%AAta) de profondeur 3
+
+Pour les algorithme MinMax et AlphaBeta, le score consiste en comptant le nombre de case de la couleur du joueur, 
+moins le nombre de case de la couleur du joueur adverse.
+
