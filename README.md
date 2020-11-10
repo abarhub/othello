@@ -34,3 +34,22 @@ Les IA implémenté sont :
 Pour les algorithme MinMax et AlphaBeta, le score consiste en comptant le nombre de case de la couleur du joueur, 
 moins le nombre de case de la couleur du joueur adverse.
 
+Build
+=====
+Pour builder le projet :
+```shell
+mvn clean install
+```
+
+Execution
+=====
+
+Pour lancer le jeux, il faut executer :
+```shell
+run.bat
+```
+ou
+```shell
+java -jar othello-1.2.0.jar
+```
+
