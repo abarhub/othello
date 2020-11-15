@@ -1,11 +1,12 @@
 package othello;
 
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 import othello.joueurs.Couple;
 
 import java.util.Map;
 import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by IntelliJ IDEA.

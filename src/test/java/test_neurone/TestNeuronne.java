@@ -1,5 +1,8 @@
 package test_neurone;
 
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import othello.neuronespack.Resultats;
 import othello.model.JeuxAuto;
 import othello.model.Coup;
@@ -10,10 +13,9 @@ import othello.joueurs.Joueur;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import org.junit.Test;
-import org.junit.Ignore;
 
 /**
  * Created by IntelliJ IDEA.
@@ -308,16 +310,20 @@ public class TestNeuronne {
         //affiche2(tmp);
     }
 
-	@Ignore
-	@Test(timeout=5000L)
-	public void test_junit1()
+    // TODO: voir s'il faut le réactiver
+	@Disabled("trop long a executer")
+	@Test
+	@Timeout(value=5000, unit = TimeUnit.MILLISECONDS)
+	public void un_test_junit1()
 	{
 		test1();
 	}
 
-	@Ignore
-	@Test(timeout=5000L)
-	public void test_junit2()
+	// TODO: voir s'il faut le réactiver
+	@Disabled("trop long a executer")
+	@Test
+	@Timeout(value=5000, unit = TimeUnit.MILLISECONDS)
+	public void un_test_junit2()
 	{
 		test2();
 	}

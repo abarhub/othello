@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class SimpleTest3 extends ReseauBP {
 
-	public static Logger log = Logger.getLogger("test_neurone.SimpleTest2");
+	public static Logger log = Logger.getLogger("test_neurone.SimpleTest3");
 
     public static final int NON_RECONNU = -1;
       // Paramètres par défaut

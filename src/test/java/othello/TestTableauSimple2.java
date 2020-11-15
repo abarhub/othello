@@ -1,6 +1,7 @@
 package othello;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import othello.model.TableauSimple2;
 
 /**
