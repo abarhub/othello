@@ -14,13 +14,13 @@ package othello.neuronespack;
  */
 public class NeuroneMP extends Neurone {
 
-  public NeuroneMP(Couche c, int Id) {
-    super(c, Id, 2);
-    setPotentiel(-1.0D);
-  }
+    public NeuroneMP(Couche c, int Id) {
+        super(c, Id, 2);
+        setPotentiel(-1.0D);
+    }
 
-  public void run() {
-    setPotentiel(calcPotentiel());
-    setSignal(calcSignal());
-  }
+    public void run() {
+        setPotentiel(calcPotentiel());
+        setSignal(calcSignal());
+    }
 }

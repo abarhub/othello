@@ -8,15 +8,16 @@ package othello.neuronespack;
  * version 1.0, 17/3/2006
  */
 
-import java.util.*;
+import java.util.Vector;
 
 /**
- *
  * <p>Title: Groupe d'unités</p>
  * <p>Description: Interface de gestion des groupes d'unités.</p>
  */
 interface GroupeUnites {
-  public Vector getLesUnites();
-  public Unite getUnite(int u);
-  public int getNbUnites();
+    public Vector getLesUnites();
+
+    public Unite getUnite(int u);
+
+    public int getNbUnites();
 }

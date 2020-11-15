@@ -9,13 +9,13 @@ package othello.model;
  */
 public interface TableauGenerique {
 
-	public Couleurs get(int no_ligne,int no_colonne);
+    public Couleurs get(int no_ligne, int no_colonne);
 
-	public void set(Couleurs couleur,int no_ligne,int no_colonne);
+    public void set(Couleurs couleur, int no_ligne, int no_colonne);
 
-	public int getNbLigne();
+    public int getNbLigne();
 
-	public int getNbColonne();
+    public int getNbColonne();
 
-	void undo();
+    void undo();
 }

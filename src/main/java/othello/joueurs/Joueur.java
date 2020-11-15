@@ -1,7 +1,7 @@
 package othello.joueurs;
 
-import othello.model.Couleurs;
 import othello.gui.CliqueListener;
+import othello.model.Couleurs;
 
 import java.awt.geom.Point2D;
 
@@ -12,9 +12,12 @@ import java.awt.geom.Point2D;
  */
 public interface Joueur extends CliqueListener {
 
-	public Point2D getChoixCase();
-	public void setJoue(boolean joue);
-	public Couleurs getCouleur();
-	public void reflechie();
+    public Point2D getChoixCase();
+
+    public void setJoue(boolean joue);
+
+    public Couleurs getCouleur();
+
+    public void reflechie();
 
 }

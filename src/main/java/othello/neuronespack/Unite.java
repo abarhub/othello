@@ -9,13 +9,15 @@ package othello.neuronespack;
  */
 
 /**
- *
  * <p>Title: Unité</p>
  * <p>Description: Interface de gestion des objets reliés par les synapses.</p>
  */
 interface Unite {
-  public int getID();
-  public double getSignalBrut();
-  public void addSynapsesIn(Synapse s);
-  public void addSynapsesOut(Synapse s);
+    public int getID();
+
+    public double getSignalBrut();
+
+    public void addSynapsesIn(Synapse s);
+
+    public void addSynapsesOut(Synapse s);
 }

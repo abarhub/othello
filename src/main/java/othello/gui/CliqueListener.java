@@ -7,5 +7,5 @@ package othello.gui;
  */
 public interface CliqueListener {
 
-	public void clique(int no_ligne,int no_colonne);
+    public void clique(int no_ligne, int no_colonne);
 }

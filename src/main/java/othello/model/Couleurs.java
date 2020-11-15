@@ -9,5 +9,5 @@ import java.awt.*;
  */
 public interface Couleurs {
 
-	public Color getColor();
+    public Color getColor();
 }

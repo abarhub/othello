@@ -14,45 +14,55 @@ package othello.neuronespack;
  */
 public abstract class ReseauFF extends Reseau {
 
-  /** Pas d'apprentissage */
-  private double eta;
+    /**
+     * Pas d'apprentissage
+     */
+    private double eta;
 
-  /**
-   * Constructeur du réseau
-   * @param nbC int : nombre de couches
-   */
-  public ReseauFF(int nbC) {
-    super(nbC);
-  }
-
-  /**
-   * Création d'une couche
-   * @param nbN int : nombre de neurones
-   * @param ft int : type de fonction de transfert
-   * @param pFT int[] : paramètres de la fonction de transfert
-   */
-  public void ajouteCouche(int nbN, int ft, double pFT[]) {
-    addCouche(new CoucheFF(nbN, ft, pFT));
-  }
-
-  /** Propagation avant */
-  public void propagation() {
-    for(int i=0; i<getNbCouches(); i++) {
-      getCouche(i).traiteCouche(this);
+    /**
+     * Constructeur du réseau
+     *
+     * @param nbC int : nombre de couches
+     */
+    public ReseauFF(int nbC) {
+        super(nbC);
     }
-    getResultats().setVecteurResultat(getLesConnexions());
-  }
 
-  /** Setter du pas d'apprentissage */
-  public void setEta(double e) {
-    eta = e;
-  }
+    /**
+     * Création d'une couche
+     *
+     * @param nbN int : nombre de neurones
+     * @param ft  int : type de fonction de transfert
+     * @param pFT int[] : paramètres de la fonction de transfert
+     */
+    public void ajouteCouche(int nbN, int ft, double pFT[]) {
+        addCouche(new CoucheFF(nbN, ft, pFT));
+    }
 
-  /** Getter du pas d'apprentissage */
-  public double getEta() {
-    return eta;
-  }
+    /**
+     * Propagation avant
+     */
+    public void propagation() {
+        for (int i = 0; i < getNbCouches(); i++) {
+            getCouche(i).traiteCouche(this);
+        }
+        getResultats().setVecteurResultat(getLesConnexions());
+    }
 
-// *********************************************************************
-  public abstract double apprend();
+    /**
+     * Setter du pas d'apprentissage
+     */
+    public void setEta(double e) {
+        eta = e;
+    }
+
+    /**
+     * Getter du pas d'apprentissage
+     */
+    public double getEta() {
+        return eta;
+    }
+
+    // *********************************************************************
+    public abstract double apprend();
 }

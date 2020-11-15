@@ -1,8 +1,8 @@
 package othello.joueurs;
 
-import othello.model.ModelOthello;
-import othello.model.Couleurs;
 import othello.model.Controleur;
+import othello.model.Couleurs;
+import othello.model.ModelOthello;
 
 /**
  * User: Barret
@@ -11,15 +11,13 @@ import othello.model.Controleur;
  */
 public class JoueurHumain extends JoueurNormal {
 
-	public JoueurHumain(ModelOthello model, Couleurs couleur, Controleur controleur)
-	{
-		super(model, couleur, controleur);
-	}
+    public JoueurHumain(ModelOthello model, Couleurs couleur, Controleur controleur) {
+        super(model, couleur, controleur);
+    }
 
-	public void clique(int no_ligne, int no_colonne) {
-		if(joue)
-		{
-			setChoixCase(no_ligne,no_colonne);
-		}
-	}
+    public void clique(int no_ligne, int no_colonne) {
+        if (joue) {
+            setChoixCase(no_ligne, no_colonne);
+        }
+    }
 }

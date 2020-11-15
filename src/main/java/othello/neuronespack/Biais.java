@@ -8,7 +8,7 @@ package othello.neuronespack;
  * version 1.0, 17/3/2006
  */
 
-import java.util.*;
+import java.util.Vector;
 
 /**
  * <p>Title: Biais</p>
@@ -16,38 +16,49 @@ import java.util.*;
  */
 public class Biais extends UniteExterne implements GroupeUnites {
 
-  /** Pointeur sur les unités (le biais) */
-  private Vector lesUnites;
+    /**
+     * Pointeur sur les unités (le biais)
+     */
+    private Vector lesUnites;
 
-  /**
-   * Construit un biais avec un identifiant
-   * @param Id int : Identifiant
-   */
-  public Biais(int Id) {
-    super(Id);
-    lesUnites = new Vector(1);
-    lesUnites.addElement(this);
-    setSignalCourant(-1.0D);
-  }
+    /**
+     * Construit un biais avec un identifiant
+     *
+     * @param Id int : Identifiant
+     */
+    public Biais(int Id) {
+        super(Id);
+        lesUnites = new Vector(1);
+        lesUnites.addElement(this);
+        setSignalCourant(-1.0D);
+    }
 
-  /** Force le signal à -1 */
-  public void setSignalCourant(double v) {
-    super.setSignalCourant(-1.0D);
-  }
+    /**
+     * Force le signal à -1
+     */
+    public void setSignalCourant(double v) {
+        super.setSignalCourant(-1.0D);
+    }
 
-  /** Getter d'une unité */
-  public Unite getUnite(int u) {
-    return (Unite) lesUnites.elementAt(0);
-  }
+    /**
+     * Getter d'une unité
+     */
+    public Unite getUnite(int u) {
+        return (Unite) lesUnites.elementAt(0);
+    }
 
-  /** Getter des unités */
-  public Vector getLesUnites() {
-    return lesUnites;
-  }
+    /**
+     * Getter des unités
+     */
+    public Vector getLesUnites() {
+        return lesUnites;
+    }
 
-  /** Getter du nombre d'unités */
-  public int getNbUnites() {
-    return 1;
-  }
+    /**
+     * Getter du nombre d'unités
+     */
+    public int getNbUnites() {
+        return 1;
+    }
 
 }

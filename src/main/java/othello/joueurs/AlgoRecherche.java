@@ -9,5 +9,5 @@ import java.awt.geom.Point2D;
  */
 public interface AlgoRecherche {
 
-	public Point2D cherche_case();
+    public Point2D cherche_case();
 }

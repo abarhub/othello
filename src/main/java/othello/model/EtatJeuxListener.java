@@ -9,13 +9,13 @@ import othello.joueurs.Joueur;
  */
 public interface EtatJeuxListener {
 
-	public void changement_joueur(Joueur joueur);
+    public void changement_joueur(Joueur joueur);
 
-	public void joueur_bloque(Joueur joueur);
+    public void joueur_bloque(Joueur joueur);
 
-	public void fin_partie();
+    public void fin_partie();
 
-	public void case_incorrecte(Couleurs couleur, int no_ligne, int no_colonne);
+    public void case_incorrecte(Couleurs couleur, int no_ligne, int no_colonne);
 
     public void joueur_joue(Couleurs couleur, int no_ligne, int no_colonne);
 }
