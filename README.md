@@ -1,10 +1,10 @@
-othello
+org.othello
 =======
 
-Jeux d'othello développé en Java.
+Jeux d'org.othello développé en Java.
 Testé sous windows 10 avec Java 8.
 
-![Screenshot](/doc/othello_capture.PNG?raw=true "Exemple othello")
+![Screenshot](/doc/othello_capture.PNG?raw=true "Exemple org.othello")
 
 Ce projet date de fin 2009 - debut 2010.
 Il m'a permis de tester une IA avec réseau de neuronnes.
@@ -50,6 +50,6 @@ run.bat
 ```
 ou
 ```shell
-java -jar othello-1.2.0.jar
+java -jar org.othello-1.2.0.jar
 ```
 
