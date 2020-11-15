@@ -1,5 +1,6 @@
 package othello.model;
 
+import com.google.common.base.Preconditions;
 import othello.joueurs.Couple;
 
 import java.util.Map;
@@ -57,10 +58,10 @@ public class TableauMap2 implements TableauGenerique  {
 	}
 
 	public Couleurs get(int no_ligne, int no_colonne) {
-		assert(no_ligne>=0);
-		assert(no_ligne<this.nb_ligne);
-		assert(no_colonne>=0);
-		assert(no_colonne<this.nb_colonne);
+		Preconditions.checkArgument(no_ligne>=0);
+		Preconditions.checkArgument(no_ligne<this.nb_ligne);
+		Preconditions.checkArgument(no_colonne>=0);
+		Preconditions.checkArgument(no_colonne<this.nb_colonne);
 		Couple c;
 		c=new Couple(no_ligne,no_colonne);
 		if(map.containsKey(c))
@@ -71,10 +72,10 @@ public class TableauMap2 implements TableauGenerique  {
 	}
 
 	public void set(Couleurs couleur, int no_ligne, int no_colonne) {
-		assert(no_ligne>=0);
-		assert(no_ligne<this.nb_ligne);
-		assert(no_colonne>=0);
-		assert(no_colonne<this.nb_colonne);
+		Preconditions.checkArgument(no_ligne>=0);
+		Preconditions.checkArgument(no_ligne<this.nb_ligne);
+		Preconditions.checkArgument(no_colonne>=0);
+		Preconditions.checkArgument(no_colonne<this.nb_colonne);
 		Couple c;
 		c=new Couple(no_ligne,no_colonne);
 		if(premier==null)

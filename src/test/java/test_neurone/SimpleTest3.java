@@ -1,5 +1,6 @@
 package test_neurone;
 
+import com.google.common.base.Preconditions;
 import othello.neuronespack.ReseauBP;
 import othello.neuronespack.FonctionTransfert;
 
@@ -42,9 +43,9 @@ public class SimpleTest3 extends ReseauBP {
     public SimpleTest3(/*BPRecChiffreProcess p,*/ int nbcc, int[] tailleCouches
                                 , double eta, double moment,int entree,int sortie) {
         super(nbcc + 2);
-	    assert(nbcc>=0);
-	    assert(entree>0);
-	    assert(sortie>0);
+        Preconditions.checkArgument(nbcc>=0);
+        Preconditions.checkArgument(entree>0);
+        Preconditions.checkArgument(sortie>0);
         //processBP = p;
 	    this.entree=entree;
 	    this.sortie=sortie;
@@ -66,9 +67,9 @@ public class SimpleTest3 extends ReseauBP {
       public void apprentissage(double[][] donneesApprentissage,double[][] donneesSortie) {
         double er,err_old=0.0;
 	      boolean premier_passage=true;
-	      assert(donneesApprentissage!=null);
-	      assert(donneesSortie!=null);
-	      assert(donneesSortie.length==donneesApprentissage.length);
+          Preconditions.checkArgument(donneesApprentissage!=null);
+          Preconditions.checkArgument(donneesSortie!=null);
+          Preconditions.checkArgument(donneesSortie.length==donneesApprentissage.length);
 	      log.info("apprentissage par iterration...");
         while((er=iteration(donneesApprentissage,donneesSortie)) > 0.01 && it < 10000)
         {
@@ -77,7 +78,7 @@ public class SimpleTest3 extends ReseauBP {
 	        {
 		        if(Math.abs(err_old)<Math.abs(er)&&Math.signum(err_old)>0)
 		        {
-			        assert(false):"err="+er+",err_old="+err_old;
+                    Preconditions.checkArgument(false,"err="+er+",err_old="+err_old);
 		        }
 	        }
 	        err_old=er;
@@ -88,8 +89,8 @@ public class SimpleTest3 extends ReseauBP {
 
       /** Reconnaissance */
       public int reconnaissance(double val[]) {
-	      assert(val!=null);
-	      assert(val.length==entree);
+          Preconditions.checkArgument(val!=null);
+          Preconditions.checkArgument(val.length==entree);
         double[] entree = new double[this.entree];
         for(int j=0; j<this.entree; j++) {
           entree[j] = val[j];
@@ -106,24 +107,24 @@ public class SimpleTest3 extends ReseauBP {
 
       /** Itération. Renvoie valeur d'erreur. */
       public double iteration(double[][] donneesApprentissage,double[][] donneesSortie) {
-          assert(donneesApprentissage!=null);
-          assert(donneesApprentissage.length>0);
-          assert(donneesSortie!=null);
-          assert(donneesSortie.length>0);
-          assert(donneesSortie.length==donneesApprentissage.length);
+          Preconditions.checkArgument(donneesApprentissage!=null);
+          Preconditions.checkArgument(donneesApprentissage.length>0);
+          Preconditions.checkArgument(donneesSortie!=null);
+          Preconditions.checkArgument(donneesSortie.length>0);
+          Preconditions.checkArgument(donneesSortie.length==donneesApprentissage.length);
         double err = 0.0D;
         double[] entree = new double[this.entree];
         double[] sortieDes = new double[this.sortie];
         it++;
         for(int i=0; i<donneesApprentissage.length; i++) {
 	        log.info("AAA0("+i+","+donneesApprentissage.length+")");
-	        assert(donneesApprentissage[i].length==this.entree):"i="+i+","+donneesApprentissage[i].length+","+this.entree;
+            Preconditions.checkArgument(donneesApprentissage[i].length==this.entree,"i="+i+","+donneesApprentissage[i].length+","+this.entree);
           for(int j=0; j<this.entree; j++) {
             entree[j] = donneesApprentissage[i][j];
           }
 	        log.info("AAA1");
           getDonneesCourantes().setVecteurEntree(entree);
-	        assert(donneesSortie[i].length==this.sortie);
+            Preconditions.checkArgument(donneesSortie[i].length==this.sortie);
 	        log.info("AAA2");
           for(int j=0; j<this.sortie; j++) {
             //sortieDes[j] = (j == i ? 1.0D : 0.0D);

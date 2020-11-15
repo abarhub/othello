@@ -1,5 +1,7 @@
 package othello.model;
 
+import com.google.common.base.Preconditions;
+
 /**
  * User: Barret
  * Date: 5 déc. 2009
@@ -102,12 +104,12 @@ public class ModelOthello {
 
 	public void setCouleur(Couleurs couleur,int no_ligne,int no_colonne)
 	{
-		assert(no_ligne>=0);
-		assert (no_ligne < getNbLignes());
-		assert (no_colonne >= 0);
-		assert (no_colonne < getNbColonnes());
-		assert(!cases_non_vides(no_ligne, no_colonne));
-		assert(couleur!=null);
+		Preconditions.checkArgument(no_ligne>=0);
+		Preconditions.checkArgument (no_ligne < getNbLignes());
+		Preconditions.checkArgument (no_colonne >= 0);
+		Preconditions.checkArgument (no_colonne < getNbColonnes());
+		Preconditions.checkArgument(!cases_non_vides(no_ligne, no_colonne));
+		Preconditions.checkArgument(couleur!=null);
 		//cases_non_vides[no_ligne][no_colonne]=true;
 		//couleur_pions[no_ligne][no_colonne] = couleur;
 		couleur_pions.set(couleur,no_ligne,no_colonne);
@@ -115,10 +117,10 @@ public class ModelOthello {
 
 	public Couleurs get(int no_ligne,int no_colonne)
 	{
-		assert (no_ligne >= 0);
-		assert (no_ligne < getNbLignes());
-		assert (no_colonne >= 0);
-		assert (no_colonne < getNbColonnes());
+		Preconditions.checkArgument (no_ligne >= 0);
+		Preconditions.checkArgument (no_ligne < getNbLignes());
+		Preconditions.checkArgument (no_colonne >= 0);
+		Preconditions.checkArgument (no_colonne < getNbColonnes());
 		if(cases_non_vides(no_ligne, no_colonne))
 			//return couleur_pions[no_ligne][no_colonne];
 			return couleur_pions.get(no_ligne,no_colonne);
@@ -128,7 +130,7 @@ public class ModelOthello {
 
     public boolean VerifCouleur(Couleurs couleur, int no_ligne, int no_colonne)
 	{
-		assert (couleur != null);
+		Preconditions.checkArgument (couleur != null);
 		if(no_ligne>=0&& no_ligne < getNbLignes())
 		{
 			if(no_colonne >= 0&& no_colonne < getNbColonnes())
@@ -147,7 +149,7 @@ public class ModelOthello {
 
 	public boolean SetVerifCouleur(Couleurs couleur, int no_ligne, int no_colonne)
 	{
-		assert (couleur != null);
+		Preconditions.checkArgument (couleur != null);
 		if(no_ligne>=0&& no_ligne < getNbLignes())
 		{
 			if(no_colonne >= 0&& no_colonne < getNbColonnes())
@@ -167,11 +169,11 @@ public class ModelOthello {
 	}
 
 	private void modifie_lignes(Couleurs couleur, int no_ligne, int no_colonne) {
-		assert (no_ligne >= 0);
-		assert (no_ligne < getNbLignes());
-		assert (no_colonne >= 0);
-		assert (no_colonne < getNbColonnes());
-		assert (couleur != null);
+		Preconditions.checkArgument (no_ligne >= 0);
+		Preconditions.checkArgument (no_ligne < getNbLignes());
+		Preconditions.checkArgument (no_colonne >= 0);
+		Preconditions.checkArgument (no_colonne < getNbColonnes());
+		Preconditions.checkArgument (couleur != null);
 		if (!cases_non_vides(no_ligne, no_colonne)) {
 			return;
 		}
@@ -217,11 +219,11 @@ public class ModelOthello {
 	}
 
 	private boolean case_valide_bord(Couleurs couleur, int no_ligne, int no_colonne) {
-		assert (no_ligne >= 0);
-		assert (no_ligne < getNbLignes());
-		assert (no_colonne >= 0);
-		assert (no_colonne < getNbColonnes());
-		assert (couleur != null);
+		Preconditions.checkArgument (no_ligne >= 0);
+		Preconditions.checkArgument (no_ligne < getNbLignes());
+		Preconditions.checkArgument (no_colonne >= 0);
+		Preconditions.checkArgument (no_colonne < getNbColonnes());
+		Preconditions.checkArgument (couleur != null);
 		if(cases_non_vides(no_ligne, no_colonne))
 		{
 			return false;
@@ -244,10 +246,10 @@ public class ModelOthello {
 	}
 
 	private boolean ligne_prise(Couleurs couleur, int no_ligne, int no_colonne, int x, int y) {
-		assert(!(x==0&&y==0));
-		assert (x >= -1 && x<= 1);
-		assert (y >= -1 && y <= 1);
-		assert (couleur!=null);
+		Preconditions.checkArgument(!(x==0&&y==0));
+		Preconditions.checkArgument (x >= -1 && x<= 1);
+		Preconditions.checkArgument (y >= -1 && y <= 1);
+		Preconditions.checkArgument (couleur!=null);
 		int x0,y0,nb;
 		boolean fin=false;
 		Couleurs tmp;
@@ -292,7 +294,7 @@ public class ModelOthello {
 
 	public boolean isCaseValide(Couleurs couleur, int no_ligne, int no_colonne)
 	{
-		assert (couleur != null);
+		Preconditions.checkArgument (couleur != null);
 		if (no_ligne >= 0 && no_ligne < getNbLignes()) {
 			if (no_colonne >= 0 && no_colonne < getNbColonnes()) {
 				return case_valide_bord(couleur,no_ligne,no_colonne);
@@ -303,7 +305,7 @@ public class ModelOthello {
 
 	public int getScore(Couleurs couleur) {
 		int nb=0;
-		assert(couleur!=null);
+		Preconditions.checkArgument(couleur!=null);
 		for(int i=0;i<getNbLignes();i++)
 		{
 			for(int j=0;j<getNbColonnes();j++)
@@ -319,7 +321,7 @@ public class ModelOthello {
 	}
 
 	public boolean peut_jouer(Couleurs couleur) {
-		assert (couleur!=null);
+		Preconditions.checkArgument (couleur!=null);
 		for (int i = 0; i < getNbLignes(); i++) {
 			for (int j = 0; j < getNbColonnes(); j++) {
 				if(isCaseValide(couleur,i,j))
@@ -332,11 +334,11 @@ public class ModelOthello {
 	}
 
 	public int score_si(Couleurs couleur, int no_ligne, int no_colonne) {
-		assert (no_ligne >= 0);
-		assert (no_ligne < getNbLignes());
-		assert (no_colonne >= 0);
-		assert (no_colonne < getNbColonnes());
-		assert (couleur != null);
+		Preconditions.checkArgument (no_ligne >= 0);
+		Preconditions.checkArgument (no_ligne < getNbLignes());
+		Preconditions.checkArgument (no_colonne >= 0);
+		Preconditions.checkArgument (no_colonne < getNbColonnes());
+		Preconditions.checkArgument (couleur != null);
 		int res=0;
 		if (cases_non_vides(no_ligne, no_colonne)) {
 			return 0;
@@ -354,10 +356,10 @@ public class ModelOthello {
 
 
 	private int ligne_prise_score(Couleurs couleur, int no_ligne, int no_colonne, int x, int y) {
-		assert (!(x == 0 && y == 0));
-		assert (x >= -1 && x <= 1);
-		assert (y >= -1 && y <= 1);
-		assert (couleur != null);
+		Preconditions.checkArgument (!(x == 0 && y == 0));
+		Preconditions.checkArgument (x >= -1 && x <= 1);
+		Preconditions.checkArgument (y >= -1 && y <= 1);
+		Preconditions.checkArgument (couleur != null);
 		int x0, y0, nb;
 		boolean fin = false;
 		Couleurs tmp;

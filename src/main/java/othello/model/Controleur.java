@@ -1,5 +1,6 @@
 package othello.model;
 
+import com.google.common.base.Preconditions;
 import othello.gui.Cadrillage;
 import othello.gui.CliqueListener;
 import othello.joueurs.Joueur;
@@ -46,7 +47,7 @@ public class Controleur implements CliqueListener {
 	}
 
 	public boolean setChoixCase(Couleurs couleur, int no_ligne, int no_colonne) {
-		assert (isDemarrer());
+		Preconditions.checkArgument (isDemarrer());
 		log.info("Joueur "+couleur+" a joue "+no_ligne+","+no_colonne);
         if(model.VerifCouleur(couleur,no_ligne,no_colonne))
 		//if(model.SetVerifCouleur(couleur,no_ligne,no_colonne))
@@ -54,7 +55,7 @@ public class Controleur implements CliqueListener {
             boolean b;
             etat_jeux.joueur_joue(couleur,no_ligne,no_colonne);
             b=model.SetVerifCouleur(couleur,no_ligne,no_colonne);
-            assert(b=true);
+			Preconditions.checkArgument(b=true);
 			//cadrillage.repaint();
 			if(gui)
 			{
@@ -113,18 +114,18 @@ public class Controleur implements CliqueListener {
 
 	private boolean peut_jouer(int joueur_courant) {
 		Couleurs couleur;
-		assert(joueur_courant>=0);
-		assert (joueur_courant < liste_joueurs.length);
+		Preconditions.checkArgument(joueur_courant>=0);
+		Preconditions.checkArgument (joueur_courant < liste_joueurs.length);
 		couleur= liste_joueurs[joueur_courant].getCouleur();
 		return model.peut_jouer(couleur);
 	}
 
 	public void demarrage(Joueur liste_joueurs[],int joueur_depart) {
-		assert (!isDemarrer());
-		assert(liste_joueurs!=null);
-		assert (liste_joueurs.length>0);
-		assert (joueur_depart >= 0);
-		assert (joueur_depart< liste_joueurs.length);
+		Preconditions.checkArgument (!isDemarrer());
+		Preconditions.checkArgument(liste_joueurs!=null);
+		Preconditions.checkArgument (liste_joueurs.length>0);
+		Preconditions.checkArgument (joueur_depart >= 0);
+		Preconditions.checkArgument (joueur_depart< liste_joueurs.length);
 		this.liste_joueurs = liste_joueurs;
 		if (!model.peut_jouer(liste_joueurs[joueur_depart].getCouleur())&&!fini())
 		{
@@ -140,7 +141,7 @@ public class Controleur implements CliqueListener {
 
 	public void arrete()
 	{
-		assert (isDemarrer());
+		Preconditions.checkArgument (isDemarrer());
 		liste_joueurs=null;
 		joueur_courant = -1;
 	}

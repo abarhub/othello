@@ -1,5 +1,6 @@
 package test_neurone;
 
+import com.google.common.base.Preconditions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -109,7 +110,7 @@ public class TestNeuronne {
         calcul(entree0,sortie0,nb_exemple,nb_lignes,nb_colonnes);
 	    log.info("fin de calcul des exemples");
         //calcul(entree2,sortie2,nb_exemple,nb_lignes,nb_colonnes);
-	    assert(entree0.size()==sortie0.size());
+		Preconditions.checkArgument(entree0.size()==sortie0.size());
 	    nb_exemple2=entree0.size()/2;
 	    for(int i=0;i<entree0.size();i++)
 	    {
@@ -151,7 +152,7 @@ public class TestNeuronne {
         tab=new double[liste.size()][nb_colonnes];
         for(int i=0;i<liste.size();i++)
         {
-            assert(liste.get(i).size()==nb_colonnes);
+			Preconditions.checkArgument(liste.get(i).size()==nb_colonnes);
             for(int j=0;j<liste.get(i).size();j++)
             {
                 d=liste.get(i).get(j);
@@ -195,7 +196,7 @@ public class TestNeuronne {
 			        no_colonne=c.getNo_colonne();
 			        model2=new ModelOthello(model);
 			        b=model2.SetVerifCouleur(c.getCouleur(),no_ligne,no_colonne);
-			        assert(b);
+					Preconditions.checkArgument(b);
 			        tmp1=conv2(model,c.getCouleur());
 			        //tmp2=conv2(model2);
 			        tmp2=new ArrayList<Double>();
@@ -286,7 +287,7 @@ public class TestNeuronne {
 				0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
 				0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 		};
-		assert(tab.length==entree);
+		Preconditions.checkArgument(tab.length==entree);
 		tab2=new double[][]{tab};
 		tab3=new double[][]{{
 				0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,

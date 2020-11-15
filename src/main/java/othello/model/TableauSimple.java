@@ -1,5 +1,7 @@
 package othello.model;
 
+import com.google.common.base.Preconditions;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Alain
@@ -33,18 +35,18 @@ public class TableauSimple implements TableauGenerique {
 	}
 
 	public Couleurs get(int no_ligne, int no_colonne) {
-		assert(no_ligne>=0);
-		assert(no_ligne<this.nb_ligne);
-		assert(no_colonne>=0);
-		assert(no_colonne<this.nb_colonne);
+		Preconditions.checkArgument(no_ligne>=0);
+		Preconditions.checkArgument(no_ligne<this.nb_ligne);
+		Preconditions.checkArgument(no_colonne>=0);
+		Preconditions.checkArgument(no_colonne<this.nb_colonne);
 		return tab[no_ligne][no_colonne];
 	}
 
 	public void set(Couleurs couleur, int no_ligne, int no_colonne) {
-		assert(no_ligne>=0);
-		assert(no_ligne<this.nb_ligne);
-		assert(no_colonne>=0);
-		assert(no_colonne<this.nb_colonne);
+		Preconditions.checkArgument(no_ligne>=0);
+		Preconditions.checkArgument(no_ligne<this.nb_ligne);
+		Preconditions.checkArgument(no_colonne>=0);
+		Preconditions.checkArgument(no_colonne<this.nb_colonne);
 		tab[no_ligne][no_colonne]=couleur;
 	}
 
