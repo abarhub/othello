@@ -1,6 +1,7 @@
 package org.othello.model;
 
 import org.othello.joueurs.Couple;
+import org.othello.utils.CheckUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,8 +21,8 @@ public class TableauSimple2 implements TableauGenerique {
     private long val_blanc;
 
     public TableauSimple2(int nb_ligne, int nb_colonne) {
-        assert (nb_ligne <= 8);
-        assert (nb_colonne <= 8);
+        CheckUtils.checkArgument (nb_ligne <= 8);
+        CheckUtils.checkArgument (nb_colonne <= 8);
         this.nb_ligne = nb_ligne;
         this.nb_colonne = nb_colonne;
         //tab=new Couleurs[nb_ligne][nb_colonne];
@@ -58,7 +59,7 @@ public class TableauSimple2 implements TableauGenerique {
                         } else if (c == CouleursJoueurs.Blanc) {
                             set(c, i, j);
                         } else {
-                            assert (false) : "c=" + c;
+                            CheckUtils.checkArgument (false,  "c=" + c);
                         }
                     }
                 }
@@ -69,10 +70,10 @@ public class TableauSimple2 implements TableauGenerique {
     private Map<Couple, Couleurs> map_couleurs;
 
     public Couleurs get(int no_ligne, int no_colonne) {
-        assert (no_ligne >= 0);
-        assert (no_ligne < this.nb_ligne);
-        assert (no_colonne >= 0);
-        assert (no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument (no_ligne >= 0);
+        CheckUtils.checkArgument (no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument (no_colonne >= 0);
+        CheckUtils.checkArgument (no_colonne < this.nb_colonne);
         final boolean methode2 = false;
         //return tab[no_ligne][no_colonne];
         if (methode2) {
@@ -107,10 +108,10 @@ public class TableauSimple2 implements TableauGenerique {
     }
 
     public void set(Couleurs couleur, int no_ligne, int no_colonne) {
-        assert (no_ligne >= 0);
-        assert (no_ligne < this.nb_ligne);
-        assert (no_colonne >= 0);
-        assert (no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument (no_ligne >= 0);
+        CheckUtils.checkArgument (no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument (no_colonne >= 0);
+        CheckUtils.checkArgument (no_colonne < this.nb_colonne);
         if (couleur == null) {
             val_noir = set_bit(val_noir, no_ligne, no_colonne, false, nb_colonne);
             val_blanc = set_bit(val_blanc, no_ligne, no_colonne, false, nb_colonne);
@@ -121,7 +122,7 @@ public class TableauSimple2 implements TableauGenerique {
             val_noir = set_bit(val_noir, no_ligne, no_colonne, false, nb_colonne);
             val_blanc = set_bit(val_blanc, no_ligne, no_colonne, true, nb_colonne);
         } else {
-            assert (false);
+            CheckUtils.checkArgument (false);
         }
         //tab[no_ligne][no_colonne]=couleur;
     }
@@ -129,9 +130,9 @@ public class TableauSimple2 implements TableauGenerique {
     public static boolean get_bit(long val, int no_ligne, int no_colonne, int nb_colonne) {
         long pos, tmp2;
         long tmp;
-        assert (no_ligne >= 0);
-        assert (no_colonne >= 0);
-        assert (no_ligne < nb_colonne);
+        CheckUtils.checkArgument (no_ligne >= 0);
+        CheckUtils.checkArgument (no_colonne >= 0);
+        CheckUtils.checkArgument (no_ligne < nb_colonne);
         pos = no_ligne * nb_colonne + no_colonne;
         tmp2 = 1L << pos;
         return (val & tmp2) != 0;
@@ -140,9 +141,9 @@ public class TableauSimple2 implements TableauGenerique {
     public static long set_bit(long val, int no_ligne, int no_colonne, boolean b_true, int nb_colonne) {
         long pos, tmp2;
         long tmp;
-        assert (no_ligne >= 0);
-        assert (no_colonne >= 0);
-        assert (no_ligne < nb_colonne);
+        CheckUtils.checkArgument (no_ligne >= 0);
+        CheckUtils.checkArgument (no_colonne >= 0);
+        CheckUtils.checkArgument (no_ligne < nb_colonne);
         pos = no_ligne * nb_colonne + no_colonne;
         tmp2 = 1L << pos;
         tmp = val;

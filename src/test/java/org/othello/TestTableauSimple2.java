@@ -3,6 +3,9 @@ package org.othello;
 
 import org.junit.jupiter.api.Test;
 import org.othello.model.TableauSimple2;
+import org.othello.utils.CheckUtils;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,28 +20,28 @@ public class TestTableauSimple2 {
     public void test1() {
         long tmp1, tmp2, fin;
         tmp1 = TableauSimple2.set_bit(0L, 0, 0, true, 8);
-        assert (tmp1 == 1L) : "tmp1=" + tmp1;
+        assertTrue(tmp1 == 1L, "tmp1=" + tmp1);
         tmp1 = TableauSimple2.set_bit(0L, 0, 1, true, 8);
-        assert (tmp1 == 2L) : "tmp1=" + tmp1;
+        assertTrue (tmp1 == 2L, "tmp1=" + tmp1);
         tmp1 = TableauSimple2.set_bit(0L, 0, 2, true, 8);
-        assert (tmp1 == 4L) : "tmp1=" + tmp1;
+        assertTrue (tmp1 == 4L, "tmp1=" + tmp1);
     }
 
     @Test
     public void test2() {
         long tmp1, tmp2, fin;
         tmp1 = TableauSimple2.set_bit(0L, 0, 0, true, 8);
-        assert (tmp1 == 1L) : "tmp1=" + tmp1;
+        assertTrue (tmp1 == 1L, "tmp1=" + tmp1);
         tmp1 = TableauSimple2.set_bit(0L, 0, 1, true, 8);
-        assert (tmp1 == 2L) : "tmp1=" + tmp1;
+        assertTrue (tmp1 == 2L, "tmp1=" + tmp1);
         tmp1 = TableauSimple2.set_bit(0L, 0, 2, true, 8);
-        assert (tmp1 == 4L) : "tmp1=" + tmp1;
+        assertTrue (tmp1 == 4L, "tmp1=" + tmp1);
 
         tmp2 = 1L;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 tmp1 = TableauSimple2.set_bit(0L, i, j, true, 8);
-                assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2 + "(" + i + "," + j + ")";
+                assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2 + "(" + i + "," + j + ")");
                 tmp2 = tmp2 << 1L;
             }
         }
@@ -49,7 +52,7 @@ public class TestTableauSimple2 {
         long tmp1, tmp2, fin;
         tmp1 = TableauSimple2.set_bit(0L, 3, 7, true, 8);
         tmp2 = 2147483648L;
-        assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2;
+        assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2);
     }
 
     @Test
@@ -57,13 +60,13 @@ public class TestTableauSimple2 {
         long tmp1, tmp2, fin;
         tmp1 = TableauSimple2.set_bit(0L, 6, 7, true, 8);
         tmp2 = 36028797018963968L;
-        assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2;
+        assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2);
         tmp1 = TableauSimple2.set_bit(0L, 7, 6, true, 8);
         tmp2 = 4611686018427387904L;
-        assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2;
+        assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2);
         tmp1 = TableauSimple2.set_bit(0L, 7, 7, true, 8);
         tmp2 = -9223372036854775808L;
-        assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2;
+        assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2);
     }
 
 
@@ -72,14 +75,14 @@ public class TestTableauSimple2 {
         long tmp1, tmp2, fin;
         tmp1 = TableauSimple2.set_bit(0L, 6, 7, true, 8);
         tmp2 = 36028797018963968L;
-        assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2;
+        assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2);
         tmp1 = TableauSimple2.set_bit(0L, 7, 6, true, 8);
         tmp2 = 4611686018427387904L;
-        assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2;
+        assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2);
         tmp1 = TableauSimple2.set_bit(0L, 7, 7, true, 8);
         tmp2 = -9223372036854775808L;
-        assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2;
-        assert (TableauSimple2.get_bit(tmp2, 7, 7, 8));
+        assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2);
+        assertTrue (TableauSimple2.get_bit(tmp2, 7, 7, 8));
     }
 
     @Test
@@ -89,8 +92,8 @@ public class TestTableauSimple2 {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 tmp1 = TableauSimple2.set_bit(0L, i, j, true, 8);
-                assert (tmp1 == tmp2) : "tmp1=" + tmp1 + "!=" + tmp2 + "(" + i + "," + j + ")";
-                assert (TableauSimple2.get_bit(tmp1, i, j, 8)) : "tmp1=" + tmp1 + "!=" + tmp2 + "(" + i + "," + j + ")";
+                assertTrue (tmp1 == tmp2, "tmp1=" + tmp1 + "!=" + tmp2 + "(" + i + "," + j + ")");
+                assertTrue (TableauSimple2.get_bit(tmp1, i, j, 8), "tmp1=" + tmp1 + "!=" + tmp2 + "(" + i + "," + j + ")");
                 tmp2 = tmp2 << 1L;
             }
         }

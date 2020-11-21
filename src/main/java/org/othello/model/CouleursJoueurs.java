@@ -1,5 +1,7 @@
 package org.othello.model;
 
+import org.othello.utils.CheckUtils;
+
 import java.awt.*;
 
 /**
@@ -11,7 +13,7 @@ public enum CouleursJoueurs implements Couleurs {
     Noir(Color.BLACK), Blanc(Color.WHITE);
 
     private CouleursJoueurs(Color couleur) {
-        assert (couleur != null);
+        CheckUtils.checkArgument (couleur != null);
         this.couleur = couleur;
     }
 

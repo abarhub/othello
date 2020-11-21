@@ -3,6 +3,7 @@ package org.othello.joueurs;
 import org.othello.model.Controleur;
 import org.othello.model.Couleurs;
 import org.othello.model.ModelOthello;
+import org.othello.utils.CheckUtils;
 
 import java.awt.geom.Point2D;
 
@@ -44,7 +45,7 @@ public abstract class JoueurNormal implements Joueur {
     }
 
     protected boolean setChoixCase(int no_ligne, int no_colonne) {
-        assert (joue);
+        CheckUtils.checkArgument (joue);
         if (controleur.setChoixCase(couleur, no_ligne, no_colonne)) {
             //joue=false;
             return true;

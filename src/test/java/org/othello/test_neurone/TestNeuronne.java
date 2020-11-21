@@ -1,6 +1,5 @@
 package org.othello.test_neurone;
 
-import com.google.common.base.Preconditions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -11,6 +10,7 @@ import org.othello.model.Coup;
 import org.othello.model.JeuxAuto;
 import org.othello.model.ModelOthello;
 import org.othello.neuronespack.Resultats;
+import org.othello.utils.CheckUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,7 +107,7 @@ public class TestNeuronne {
         calcul(entree0, sortie0, nb_exemple, nb_lignes, nb_colonnes);
         log.info("fin de calcul des exemples");
         //calcul(entree2,sortie2,nb_exemple,nb_lignes,nb_colonnes);
-        Preconditions.checkArgument(entree0.size() == sortie0.size());
+        CheckUtils.checkArgument(entree0.size() == sortie0.size());
         nb_exemple2 = entree0.size() / 2;
         for (int i = 0; i < entree0.size(); i++) {
             if (i <= entree0.size() / 2) {
@@ -142,7 +142,7 @@ public class TestNeuronne {
         nb_colonnes = liste.get(0).size();
         tab = new double[liste.size()][nb_colonnes];
         for (int i = 0; i < liste.size(); i++) {
-            Preconditions.checkArgument(liste.get(i).size() == nb_colonnes);
+            CheckUtils.checkArgument(liste.get(i).size() == nb_colonnes);
             for (int j = 0; j < liste.get(i).size(); j++) {
                 d = liste.get(i).get(j);
                 tab[i][j] = d;
@@ -182,7 +182,7 @@ public class TestNeuronne {
                     no_colonne = c.getNo_colonne();
                     model2 = new ModelOthello(model);
                     b = model2.SetVerifCouleur(c.getCouleur(), no_ligne, no_colonne);
-                    Preconditions.checkArgument(b);
+                    CheckUtils.checkArgument(b);
                     tmp1 = conv2(model, c.getCouleur());
                     //tmp2=conv2(model2);
                     tmp2 = new ArrayList<Double>();
@@ -260,7 +260,7 @@ public class TestNeuronne {
                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
         };
-        Preconditions.checkArgument(tab.length == entree);
+        CheckUtils.checkArgument(tab.length == entree);
         tab2 = new double[][]{tab};
         tab3 = new double[][]{{
                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,

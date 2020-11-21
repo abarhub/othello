@@ -1,9 +1,9 @@
 package org.othello.joueurs;
 
-import com.google.common.base.Preconditions;
 import org.othello.model.Couleurs;
 import org.othello.model.CouleursJoueurs;
 import org.othello.model.ModelOthello;
+import org.othello.utils.CheckUtils;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -47,7 +47,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
                 Integer.MIN_VALUE, Integer.MAX_VALUE);
         log.info("Fin de recherche case..." + model + "profondeur=" + profondeur);
         meilleur = pos.getPoint();
-        Preconditions.checkArgument(meilleur != null);
+        CheckUtils.checkArgument(meilleur != null);
         return meilleur;
     }
 
@@ -63,12 +63,12 @@ public class AlgoAlphaBeta implements AlgoRecherche {
     };
 
     private int calcul_score(ModelOthello model, int no_ligne, int no_colonne, Couleurs couleur) {
-        Preconditions.checkArgument(model != null);
-        Preconditions.checkArgument(couleur != null);
-        Preconditions.checkArgument(no_ligne >= 0);
-        Preconditions.checkArgument(no_ligne < model.getNbLignes());
-        Preconditions.checkArgument(no_colonne >= 0);
-        Preconditions.checkArgument(no_colonne < model.getNbColonnes());
+        CheckUtils.checkArgument(model != null);
+        CheckUtils.checkArgument(couleur != null);
+        CheckUtils.checkArgument(no_ligne >= 0);
+        CheckUtils.checkArgument(no_ligne < model.getNbLignes());
+        CheckUtils.checkArgument(no_colonne >= 0);
+        CheckUtils.checkArgument(no_colonne < model.getNbColonnes());
         if (true) {
             //return model.getScore(this.couleur);
             return model.getScore(couleur);
@@ -89,7 +89,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
         Position pos, meilleur = null;
         List<Couple> liste_coups;
         log.entering("AlgoAlphaBeta", "meilleur_score", new Object[]{couleur, niveau});
-        Preconditions.checkArgument(niveau > -1);
+        CheckUtils.checkArgument(niveau > -1);
         liste_coups = new ArrayList<Couple>();
         for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
             for (int no_colonne = 0; no_colonne < model.getNbColonnes(); no_colonne++) {
@@ -108,7 +108,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
             int no_ligne, no_colonne;
             no_ligne = c2.getNo_ligne();
             no_colonne = c2.getNo_colonne();
-            Preconditions.checkArgument(model.isCaseValide(couleur, no_ligne, no_colonne));
+            CheckUtils.checkArgument(model.isCaseValide(couleur, no_ligne, no_colonne));
             //log.finest("model="+model+"case(" + no_ligne+","+no_colonne + ")couleur="+couleur+",niveau=" + niveau);
             tmp = new Point(no_ligne, no_colonne);
             m = new ModelOthello(model);
@@ -196,15 +196,15 @@ public class AlgoAlphaBeta implements AlgoRecherche {
             //meilleur.setScore(model.getScore(this.couleur));
             meilleur.setScore(calcul_score(model, 0, 0, this.couleur));
         }
-        Preconditions.checkArgument(meilleur != null);
+        CheckUtils.checkArgument(meilleur != null);
         log.exiting("AlgoAlphaBeta", "meilleur_score", meilleur);
         return meilleur;
     }
 
     private void trie(List<Couple> liste_coups, Couleurs couleur, ModelOthello model, boolean max) {
-        Preconditions.checkArgument(liste_coups != null);
-        Preconditions.checkArgument(couleur != null);
-        Preconditions.checkArgument(model != null);
+        CheckUtils.checkArgument(liste_coups != null);
+        CheckUtils.checkArgument(couleur != null);
+        CheckUtils.checkArgument(model != null);
         if (!liste_coups.isEmpty()) {
             Map<Integer, List<Couple>> map;
             List<Couple> tmp;

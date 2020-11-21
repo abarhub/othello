@@ -2,6 +2,7 @@ package org.othello.gui;
 
 import org.othello.joueurs.*;
 import org.othello.model.*;
+import org.othello.utils.CheckUtils;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -152,7 +153,7 @@ public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxLis
         if (joueur1_humain) {
             joueur[0] = new JoueurHumain(model, CouleursJoueurs.Noir, controleur);
         } else {
-            assert (algo1 != null);
+            CheckUtils.checkArgument (algo1 != null);
             //algo = new Algo1(model, CouleursJoueurs.Noir);
             algo = ListeAlgos.getAlgo(algo1, model, CouleursJoueurs.Noir);
             joueur[0] = new JoueurOrdiSimple(model, CouleursJoueurs.Noir, controleur, algo);
@@ -162,7 +163,7 @@ public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxLis
         if (joueur2_humain) {
             joueur[1] = new JoueurHumain(model, CouleursJoueurs.Blanc, controleur);
         } else {
-            assert (algo2 != null);
+            CheckUtils.checkArgument (algo2 != null);
             //algo=new Algo1(model, CouleursJoueurs.Blanc);
             algo = ListeAlgos.getAlgo(algo2, model, CouleursJoueurs.Blanc);
             joueur[1] = new JoueurOrdiSimple(model, CouleursJoueurs.Blanc, controleur, algo);

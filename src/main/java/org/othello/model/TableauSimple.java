@@ -1,6 +1,6 @@
 package org.othello.model;
 
-import com.google.common.base.Preconditions;
+import org.othello.utils.CheckUtils;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,18 +32,18 @@ public class TableauSimple implements TableauGenerique {
     }
 
     public Couleurs get(int no_ligne, int no_colonne) {
-        Preconditions.checkArgument(no_ligne >= 0);
-        Preconditions.checkArgument(no_ligne < this.nb_ligne);
-        Preconditions.checkArgument(no_colonne >= 0);
-        Preconditions.checkArgument(no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument(no_ligne >= 0);
+        CheckUtils.checkArgument(no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument(no_colonne >= 0);
+        CheckUtils.checkArgument(no_colonne < this.nb_colonne);
         return tab[no_ligne][no_colonne];
     }
 
     public void set(Couleurs couleur, int no_ligne, int no_colonne) {
-        Preconditions.checkArgument(no_ligne >= 0);
-        Preconditions.checkArgument(no_ligne < this.nb_ligne);
-        Preconditions.checkArgument(no_colonne >= 0);
-        Preconditions.checkArgument(no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument(no_ligne >= 0);
+        CheckUtils.checkArgument(no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument(no_colonne >= 0);
+        CheckUtils.checkArgument(no_colonne < this.nb_colonne);
         tab[no_ligne][no_colonne] = couleur;
     }
 

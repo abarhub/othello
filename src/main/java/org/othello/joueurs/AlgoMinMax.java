@@ -3,6 +3,7 @@ package org.othello.joueurs;
 import org.othello.model.Couleurs;
 import org.othello.model.CouleursJoueurs;
 import org.othello.model.ModelOthello;
+import org.othello.utils.CheckUtils;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -62,7 +63,7 @@ public class AlgoMinMax implements AlgoRecherche {
         //if(pos!=null)
         {
             meilleur = pos.getPoint();
-            assert (meilleur != null);
+            CheckUtils.checkArgument (meilleur != null);
         }
         //log.info("meilleur socre="+ score_meilleur);
         return meilleur;
@@ -82,7 +83,7 @@ public class AlgoMinMax implements AlgoRecherche {
         Couleurs c;//AlgoMinMax
         Position pos, meilleur = null;
         log.entering("AlgoMinMax", "meilleur_score", new Object[]{couleur, niveau});
-        assert (niveau > -1);
+        CheckUtils.checkArgument (niveau > -1);
         liste = new ArrayList<Position>();
         for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
             for (int no_colonne = 0; no_colonne < model.getNbColonnes(); no_colonne++) {
@@ -151,7 +152,7 @@ public class AlgoMinMax implements AlgoRecherche {
             //meilleur.setScore(0);
             meilleur.setScore(model.getScore(this.couleur));
         }
-        assert (meilleur != null);
+        CheckUtils.checkArgument (meilleur != null);
         log.exiting("AlgoMinMax", "meilleur_score", meilleur);
         return meilleur;
     }

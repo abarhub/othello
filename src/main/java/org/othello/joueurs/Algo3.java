@@ -3,6 +3,7 @@ package org.othello.joueurs;
 import org.othello.model.Couleurs;
 import org.othello.model.CouleursJoueurs;
 import org.othello.model.ModelOthello;
+import org.othello.utils.CheckUtils;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -47,7 +48,7 @@ public class Algo3 implements AlgoRecherche {
 			}
 		}*/
         meilleur = meilleur_score(model, couleur);
-        assert (meilleur != null);
+        CheckUtils.checkArgument (meilleur != null);
         //log.info("meilleur socre="+ score_meilleur);
         return meilleur;
     }
@@ -86,7 +87,7 @@ public class Algo3 implements AlgoRecherche {
                 meilleur = p.getPoint();
             }
         }
-        assert (meilleur != null);
+        CheckUtils.checkArgument (meilleur != null);
         return meilleur;
     }
 

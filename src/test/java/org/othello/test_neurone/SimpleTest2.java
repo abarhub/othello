@@ -1,8 +1,8 @@
 package org.othello.test_neurone;
 
-import com.google.common.base.Preconditions;
 import org.othello.neuronespack.FonctionTransfert;
 import org.othello.neuronespack.ReseauBP;
+import org.othello.utils.CheckUtils;
 
 import java.util.logging.Logger;
 
@@ -49,9 +49,9 @@ public class SimpleTest2 extends ReseauBP {
     public SimpleTest2(/*BPRecChiffreProcess p,*/ int nbcc, int[] tailleCouches
             , double eta, double moment, int entree, int sortie) {
         super(nbcc + 2);
-        Preconditions.checkArgument(nbcc >= 0);
-        Preconditions.checkArgument(entree > 0);
-        Preconditions.checkArgument(sortie > 0);
+        CheckUtils.checkArgument(nbcc >= 0);
+        CheckUtils.checkArgument(entree > 0);
+        CheckUtils.checkArgument(sortie > 0);
         //processBP = p;
         this.entree = entree;
         this.sortie = sortie;
@@ -75,15 +75,15 @@ public class SimpleTest2 extends ReseauBP {
     public void apprentissage(double[][] donneesApprentissage, double[][] donneesSortie) {
         double er, err_old = 0.0;
         boolean premier_passage = true;
-        Preconditions.checkArgument(donneesApprentissage != null);
-        Preconditions.checkArgument(donneesSortie != null);
-        Preconditions.checkArgument(donneesSortie.length == donneesApprentissage.length);
+        CheckUtils.checkArgument(donneesApprentissage != null);
+        CheckUtils.checkArgument(donneesSortie != null);
+        CheckUtils.checkArgument(donneesSortie.length == donneesApprentissage.length);
         log.info("apprentissage par iterration...");
         while ((er = iteration(donneesApprentissage, donneesSortie)) > 0.01 && it < 10000) {
             log.info("erreur=" + er);
             if (!premier_passage) {
                 if (Math.abs(err_old) < Math.abs(er) && Math.signum(err_old) > 0) {
-                    Preconditions.checkArgument(false, "err=" + er + ",err_old=" + err_old);
+                    CheckUtils.checkArgument(false, "err=" + er + ",err_old=" + err_old);
                 }
             }
             err_old = er;
@@ -96,8 +96,8 @@ public class SimpleTest2 extends ReseauBP {
      * Reconnaissance
      */
     public int reconnaissance(double val[]) {
-        Preconditions.checkArgument(val != null);
-        Preconditions.checkArgument(val.length == entree);
+        CheckUtils.checkArgument(val != null);
+        CheckUtils.checkArgument(val.length == entree);
         double[] entree = new double[this.entree];
         for (int j = 0; j < this.entree; j++) {
             entree[j] = val[j];
@@ -116,24 +116,24 @@ public class SimpleTest2 extends ReseauBP {
      * Itération. Renvoie valeur d'erreur.
      */
     public double iteration(double[][] donneesApprentissage, double[][] donneesSortie) {
-        Preconditions.checkArgument(donneesApprentissage != null);
-        Preconditions.checkArgument(donneesApprentissage.length > 0);
-        Preconditions.checkArgument(donneesSortie != null);
-        Preconditions.checkArgument(donneesSortie.length > 0);
-        Preconditions.checkArgument(donneesSortie.length == donneesApprentissage.length);
+        CheckUtils.checkArgument(donneesApprentissage != null);
+        CheckUtils.checkArgument(donneesApprentissage.length > 0);
+        CheckUtils.checkArgument(donneesSortie != null);
+        CheckUtils.checkArgument(donneesSortie.length > 0);
+        CheckUtils.checkArgument(donneesSortie.length == donneesApprentissage.length);
         double err = 0.0D;
         double[] entree = new double[this.entree];
         double[] sortieDes = new double[this.sortie];
         it++;
         for (int i = 0; i < donneesApprentissage.length; i++) {
             log.info("AAA0(" + i + "," + donneesApprentissage.length + ")");
-            Preconditions.checkArgument(donneesApprentissage[i].length == this.entree, "i=" + i + "," + donneesApprentissage[i].length + "," + this.entree);
+            CheckUtils.checkArgument(donneesApprentissage[i].length == this.entree, "i=" + i + "," + donneesApprentissage[i].length + "," + this.entree);
             for (int j = 0; j < this.entree; j++) {
                 entree[j] = donneesApprentissage[i][j];
             }
             log.info("AAA1");
             getDonneesCourantes().setVecteurEntree(entree);
-            Preconditions.checkArgument(donneesSortie[i].length == this.sortie);
+            CheckUtils.checkArgument(donneesSortie[i].length == this.sortie);
             log.info("AAA2");
             for (int j = 0; j < this.sortie; j++) {
                 //sortieDes[j] = (j == i ? 1.0D : 0.0D);

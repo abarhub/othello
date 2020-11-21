@@ -1,9 +1,9 @@
 package org.othello.model;
 
-import com.google.common.base.Preconditions;
 import org.othello.gui.Cadrillage;
 import org.othello.gui.CliqueListener;
 import org.othello.joueurs.Joueur;
+import org.othello.utils.CheckUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +45,7 @@ public class Controleur implements CliqueListener {
     }
 
     public boolean setChoixCase(Couleurs couleur, int no_ligne, int no_colonne) {
-        Preconditions.checkArgument(isDemarrer());
+        CheckUtils.checkArgument(isDemarrer());
         log.info("Joueur " + couleur + " a joue " + no_ligne + "," + no_colonne);
         if (model.VerifCouleur(couleur, no_ligne, no_colonne))
         //if(model.SetVerifCouleur(couleur,no_ligne,no_colonne))
@@ -53,7 +53,7 @@ public class Controleur implements CliqueListener {
             boolean b;
             etat_jeux.joueur_joue(couleur, no_ligne, no_colonne);
             b = model.SetVerifCouleur(couleur, no_ligne, no_colonne);
-            Preconditions.checkArgument(b = true);
+            CheckUtils.checkArgument(b = true);
             //cadrillage.repaint();
             if (gui) {
                 //cadrillage.repaint();
@@ -102,18 +102,18 @@ public class Controleur implements CliqueListener {
 
     private boolean peut_jouer(int joueur_courant) {
         Couleurs couleur;
-        Preconditions.checkArgument(joueur_courant >= 0);
-        Preconditions.checkArgument(joueur_courant < liste_joueurs.length);
+        CheckUtils.checkArgument(joueur_courant >= 0);
+        CheckUtils.checkArgument(joueur_courant < liste_joueurs.length);
         couleur = liste_joueurs[joueur_courant].getCouleur();
         return model.peut_jouer(couleur);
     }
 
     public void demarrage(Joueur liste_joueurs[], int joueur_depart) {
-        Preconditions.checkArgument(!isDemarrer());
-        Preconditions.checkArgument(liste_joueurs != null);
-        Preconditions.checkArgument(liste_joueurs.length > 0);
-        Preconditions.checkArgument(joueur_depart >= 0);
-        Preconditions.checkArgument(joueur_depart < liste_joueurs.length);
+        CheckUtils.checkArgument(!isDemarrer());
+        CheckUtils.checkArgument(liste_joueurs != null);
+        CheckUtils.checkArgument(liste_joueurs.length > 0);
+        CheckUtils.checkArgument(joueur_depart >= 0);
+        CheckUtils.checkArgument(joueur_depart < liste_joueurs.length);
         this.liste_joueurs = liste_joueurs;
         if (!model.peut_jouer(liste_joueurs[joueur_depart].getCouleur()) && !fini()) {
             etat_jeux.joueur_bloque(liste_joueurs[joueur_depart]);
@@ -127,15 +127,15 @@ public class Controleur implements CliqueListener {
     }
 
     public void arrete() {
-        Preconditions.checkArgument(isDemarrer());
+        CheckUtils.checkArgument(isDemarrer());
         liste_joueurs = null;
         joueur_courant = -1;
     }
 
     private void activation(int joueur_joue) {
         long temps, duree;
-        //assert (isDemarrer());
-        //assert(joueur_joue!= joueur_courant);
+        //CheckUtils.checkArgument (isDemarrer());
+        //CheckUtils.checkArgument(joueur_joue!= joueur_courant);
         traite_clique = false;
         log.info("Joueur n°" + joueur_joue + " de jouer (" + liste_joueurs[joueur_joue].getCouleur() + ")");
         //cadrillage.removeListener(liste_joueurs[joueur_courant]);

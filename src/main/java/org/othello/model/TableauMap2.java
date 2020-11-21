@@ -1,7 +1,7 @@
 package org.othello.model;
 
-import com.google.common.base.Preconditions;
 import org.othello.joueurs.Couple;
+import org.othello.utils.CheckUtils;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -51,10 +51,10 @@ public class TableauMap2 implements TableauGenerique {
     }
 
     public Couleurs get(int no_ligne, int no_colonne) {
-        Preconditions.checkArgument(no_ligne >= 0);
-        Preconditions.checkArgument(no_ligne < this.nb_ligne);
-        Preconditions.checkArgument(no_colonne >= 0);
-        Preconditions.checkArgument(no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument(no_ligne >= 0);
+        CheckUtils.checkArgument(no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument(no_colonne >= 0);
+        CheckUtils.checkArgument(no_colonne < this.nb_colonne);
         Couple c;
         c = new Couple(no_ligne, no_colonne);
         if (map.containsKey(c))
@@ -65,10 +65,10 @@ public class TableauMap2 implements TableauGenerique {
     }
 
     public void set(Couleurs couleur, int no_ligne, int no_colonne) {
-        Preconditions.checkArgument(no_ligne >= 0);
-        Preconditions.checkArgument(no_ligne < this.nb_ligne);
-        Preconditions.checkArgument(no_colonne >= 0);
-        Preconditions.checkArgument(no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument(no_ligne >= 0);
+        CheckUtils.checkArgument(no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument(no_colonne >= 0);
+        CheckUtils.checkArgument(no_colonne < this.nb_colonne);
         Couple c;
         c = new Couple(no_ligne, no_colonne);
         if (premier == null)

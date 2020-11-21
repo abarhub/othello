@@ -1,6 +1,7 @@
 package org.othello.model;
 
 import org.othello.joueurs.Couple;
+import org.othello.utils.CheckUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,10 +42,10 @@ public class TableauMap implements TableauGenerique {
     }
 
     public Couleurs get(int no_ligne, int no_colonne) {
-        assert (no_ligne >= 0);
-        assert (no_ligne < this.nb_ligne);
-        assert (no_colonne >= 0);
-        assert (no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument (no_ligne >= 0);
+        CheckUtils.checkArgument (no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument (no_colonne >= 0);
+        CheckUtils.checkArgument (no_colonne < this.nb_colonne);
         Couple c;
         c = new Couple(no_ligne, no_colonne);
         if (map.containsKey(c))
@@ -55,10 +56,10 @@ public class TableauMap implements TableauGenerique {
     }
 
     public void set(Couleurs couleur, int no_ligne, int no_colonne) {
-        assert (no_ligne >= 0);
-        assert (no_ligne < this.nb_ligne);
-        assert (no_colonne >= 0);
-        assert (no_colonne < this.nb_colonne);
+        CheckUtils.checkArgument (no_ligne >= 0);
+        CheckUtils.checkArgument (no_ligne < this.nb_ligne);
+        CheckUtils.checkArgument (no_colonne >= 0);
+        CheckUtils.checkArgument (no_colonne < this.nb_colonne);
         Couple c;
         c = new Couple(no_ligne, no_colonne);
         map.put(c, couleur);
