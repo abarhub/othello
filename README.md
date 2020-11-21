@@ -1,13 +1,14 @@
-org.othello
+Othello
 =======
 
-Jeux d'org.othello développé en Java.
-Testé sous windows 10 avec Java 8.
+Jeux d'othello développé en Java.
+Testé sous windows 10 avec Java 11.
 
 ![Screenshot](/doc/othello_capture.PNG?raw=true "Exemple org.othello")
 
 Ce projet date de fin 2009 - debut 2010.
 Il m'a permis de tester une IA avec réseau de neuronnes.
+Il a été mise à jour en Java 11 avec le systeme de module vers fin 2020.
 
 Avec l'ihm, on peut jouer entre 2 joueurs humains ou contre une IA.
 On peut aussi faire jouer 2 IA l'une contre l'autre.
@@ -36,10 +37,18 @@ moins le nombre de case de la couleur du joueur adverse.
 
 Build
 =====
+Le projet est fait pour Java 11.
 Pour builder le projet :
 ```shell
 mvn clean install
 ```
+
+Pour construire le livrable créé par jlink, il faut executer la commande :
+```shell
+build_jlink.bat
+```
+
+Cela va créer un répertoire dans target/image avec ce qu'il faut pour livrer le jeux.
 
 Execution
 =====

@@ -1,1 +1,1 @@
-java --module-path target/org.othello-1.3.0-SNAPSHOT.jar;target/dependency --module othello
+java --module-path target/org.othello-1.3.0-SNAPSHOT.jar --module othello
