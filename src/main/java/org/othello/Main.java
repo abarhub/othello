@@ -21,12 +21,10 @@ import java.util.Map;
  */
 public class Main {
 
-//    public static Logger log = Logger.getLogger("org.othello.Main");
     private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] arg) {
         //config_log();
-        logger.info("Hello World");
         test1();
         //test2();
         //test3();
