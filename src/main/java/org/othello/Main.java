@@ -24,7 +24,7 @@ public class Main {
 
     public static Logger log = Logger.getLogger("org.othello.Main");
 
-    public static void main(String arg[]) {
+    public static void main(String[] arg) {
         //config_log();
         test1();
         //test2();
