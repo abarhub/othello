@@ -3,13 +3,14 @@ package org.othello.gui;
 import org.othello.joueurs.*;
 import org.othello.model.*;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxListener {
 
-    public static Logger log = Logger.getLogger("org.othello.gui.FenetreSimple");
+    public static Logger log = LoggerFactory.getLogger(FenetreSimple.class);
 
     private static final int DEFAULT_WIDTH = 530;
     private static final int DEFAULT_HEIGHT = 500;

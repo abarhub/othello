@@ -4,12 +4,13 @@ import org.othello.model.Couleurs;
 import org.othello.model.CouleursJoueurs;
 import org.othello.model.ModelOthello;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class Algo3 implements AlgoRecherche {
 
-    public static Logger log = Logger.getLogger("org.othello.joueurs.Algo3");
+    public static Logger log = LoggerFactory.getLogger(Algo3.class);
 
     private ModelOthello model;
     private Couleurs couleur;

@@ -2,10 +2,11 @@ package org.othello.model;
 
 import org.othello.joueurs.*;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class JeuxAuto implements EtatJeuxListener {
 
-    public static Logger log = Logger.getLogger("org.othello.model.JeuxAuto");
+    public static Logger log = LoggerFactory.getLogger(JeuxAuto.class);
 
     private ModelOthello model;
 

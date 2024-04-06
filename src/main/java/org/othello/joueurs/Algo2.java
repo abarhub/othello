@@ -6,7 +6,8 @@ import org.othello.utils.CheckUtils;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: Barret
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class Algo2 implements AlgoRecherche {
 
-    public static Logger log = Logger.getLogger("org.othello.joueurs.Algo2");
+    public static Logger log = LoggerFactory.getLogger(Algo2.class);
 
     private ModelOthello model;
     private Couleurs couleur;

@@ -7,14 +7,12 @@ import org.othello.joueurs.ListeAlgos;
 import org.othello.model.JeuxAuto;
 import org.othello.model.TableauSimple2;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -23,11 +21,11 @@ import java.util.logging.Logger;
  */
 public class Main {
 
-    public static Logger log = Logger.getLogger("org.othello.Main");
+//    public static Logger log = Logger.getLogger("org.othello.Main");
+    private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] arg) {
         //config_log();
-        org.slf4j.Logger logger = LoggerFactory.getLogger(Main.class);
         logger.info("Hello World");
         test1();
         //test2();
@@ -43,15 +41,15 @@ public class Main {
     }
 
     private static void config_log() {
-        Logger tmp;
+//        Logger tmp;
         //FileHandler hand = new FileHandler("vk.log");
-        ConsoleHandler cons = new ConsoleHandler();
-        tmp = AlgoMinMax.log;
-        tmp.addHandler(cons);
-        tmp.setLevel(Level.ALL);
-        tmp.info("coucou1");
-        tmp.fine("coucou2");
-        tmp.info("coucou3");
+//        ConsoleHandler cons = new ConsoleHandler();
+//        tmp = AlgoMinMax.log;
+//        tmp.addHandler(cons);
+//        tmp.setLevel(Level.ALL);
+//        tmp.info("coucou1");
+//        tmp.fine("coucou2");
+//        tmp.info("coucou3");
     }
 
     private static void test2() {

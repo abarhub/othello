@@ -3,10 +3,11 @@ package org.othello.joueurs;
 import org.othello.model.Controleur;
 import org.othello.model.Couleurs;
 import org.othello.model.ModelOthello;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class JoueurOrdiSimple extends JoueurNormal implements Runnable {
 
-    public static Logger log = Logger.getLogger("org.othello.joueurs.JoueurOrdiSimple");
+    public static Logger log = LoggerFactory.getLogger(JoueurOrdiSimple.class);
 
     private AlgoRecherche algo;
     // attente avant de commencer a chercher une solution

@@ -4,12 +4,13 @@ import org.othello.gui.Cadrillage;
 import org.othello.gui.CliqueListener;
 import org.othello.joueurs.Joueur;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class Controleur implements CliqueListener {
 
-    public static Logger log = Logger.getLogger("org.othello.model.Controleur");
+    public static Logger log = LoggerFactory.getLogger(Controleur.class);
 
     private ModelOthello model;
     //private FenetreSimple fenetre;

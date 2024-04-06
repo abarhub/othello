@@ -11,11 +11,12 @@ import org.othello.model.JeuxAuto;
 import org.othello.model.ModelOthello;
 import org.othello.neuronespack.Resultats;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 
 /**
@@ -27,7 +28,7 @@ import java.util.logging.Logger;
  */
 public class TestNeuronne {
 
-    public static Logger log = Logger.getLogger("org.othello.test_neurone.TestNeuronne");
+    public static Logger log = LoggerFactory.getLogger(TestNeuronne.class);
 
     public static void main(String arg[]) {
         //test1();

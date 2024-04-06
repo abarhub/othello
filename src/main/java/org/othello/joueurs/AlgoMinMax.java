@@ -4,13 +4,13 @@ import org.othello.model.Couleurs;
 import org.othello.model.CouleursJoueurs;
 import org.othello.model.ModelOthello;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class AlgoMinMax implements AlgoRecherche {
 
-    public static Logger log = Logger.getLogger("org.othello.joueurs.AlgoMinMax");
+    public static Logger log = LoggerFactory.getLogger(AlgoMinMax.class);
 
     private ModelOthello model;
     private Couleurs couleur;
@@ -53,9 +53,9 @@ public class AlgoMinMax implements AlgoRecherche {
 				}
 			}
 		}*/
-        log.setLevel(Level.ALL);
+//        log.setLevel(Level.ALL);
         System.out.println("Message avec println");
-        log.fine("Message avec log");
+        log.trace("Message avec log");
         System.out.println("Message 2 avec println");
         log.info("Recherche case..." + model + "profondeur=" + profondeur);
         pos = meilleur_score(model, couleur, profondeur);
@@ -82,13 +82,13 @@ public class AlgoMinMax implements AlgoRecherche {
         ModelOthello m;
         Couleurs c;//AlgoMinMax
         Position pos, meilleur = null;
-        log.entering("AlgoMinMax", "meilleur_score", new Object[]{couleur, niveau});
+        log.debug("enter AlgoMinMax meilleur_score couleur={} niveau={}", couleur, niveau);
         CheckUtils.checkArgument (niveau > -1);
         liste = new ArrayList<Position>();
         for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
             for (int no_colonne = 0; no_colonne < model.getNbColonnes(); no_colonne++) {
                 if (model.isCaseValide(couleur, no_ligne, no_colonne)) {
-                    log.finest("model=" + model + "case(" + no_ligne + "," + no_colonne + ")couleur=" + couleur + ",niveau=" + niveau);
+                    log.trace("model={} case({},{}) couleur={}, niveau={}", model, no_ligne, no_colonne, couleur, niveau);
                     tmp = new Point(no_ligne, no_colonne);
                     m = new ModelOthello(model);
                     //m.setCouleur(couleur,no_ligne,no_colonne);
@@ -124,8 +124,7 @@ public class AlgoMinMax implements AlgoRecherche {
                 }
             }
         }
-        log.fine("liste=" + liste.size());
-        log.finest("liste=" + liste.size());
+        log.trace("liste={}", liste.size());
         if (!liste.isEmpty()) {// il y a au moins un coup à jouer
             if (niveau % 2 == 0) {
                 //score_meilleur = 0;
@@ -153,7 +152,7 @@ public class AlgoMinMax implements AlgoRecherche {
             meilleur.setScore(model.getScore(this.couleur));
         }
         CheckUtils.checkArgument (meilleur != null);
-        log.exiting("AlgoMinMax", "meilleur_score", meilleur);
+        log.debug("exit AlgoMinMax meilleur_score {}", meilleur);
         return meilleur;
     }
 

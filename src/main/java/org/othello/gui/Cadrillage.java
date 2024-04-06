@@ -3,6 +3,8 @@ package org.othello.gui;
 import org.othello.model.Controleur;
 import org.othello.model.Couleurs;
 import org.othello.model.ModelOthello;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +14,6 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class Cadrillage extends JPanel implements MouseListener {
 
-    public static Logger log = Logger.getLogger("org.othello.gui.Cadrillage");
+    public static Logger log = LoggerFactory.getLogger(Cadrillage.class);
 
     private ModelOthello model;
     private List<CliqueListener> listener;

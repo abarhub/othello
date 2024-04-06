@@ -3,8 +3,8 @@ package org.othello.test_neurone;
 import org.othello.neuronespack.FonctionTransfert;
 import org.othello.neuronespack.ReseauBP;
 import org.othello.utils.CheckUtils;
-
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class SimpleTest2 extends ReseauBP {
 
-    public static Logger log = Logger.getLogger("org.othello.test_neurone.SimpleTest2");
+    public static Logger log = LoggerFactory.getLogger(SimpleTest2.class);
 
     public static final int NON_RECONNU = -1;
     // Paramètres par défaut

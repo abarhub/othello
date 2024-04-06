@@ -4,13 +4,13 @@ import org.othello.model.Couleurs;
 import org.othello.model.CouleursJoueurs;
 import org.othello.model.ModelOthello;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * User: Barret
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class AlgoAlphaBeta implements AlgoRecherche {
 
-    public static Logger log = Logger.getLogger("org.othello.joueurs.AlgoAlphaBeta");
+    public static Logger log = LoggerFactory.getLogger(AlgoAlphaBeta.class);
 
     private ModelOthello model;
     private Couleurs couleur;
@@ -38,14 +38,14 @@ public class AlgoAlphaBeta implements AlgoRecherche {
         final int arbre = niveau_profondeur;
         Position pos;
         int profondeur = arbre * 2;
-        log.setLevel(Level.ALL);
+//        log.setLevel(Level.ALL);
         System.out.println("Message avec println");
-        log.fine("Message avec log");
+        log.trace("Message avec log");
         System.out.println("Message 2 avec println");
-        log.info("Recherche case..." + model + "profondeur=" + profondeur);
+        log.info("Recherche case...{} profondeur={}", model, profondeur);
         pos = meilleur_score(model, couleur, profondeur, true,
                 Integer.MIN_VALUE, Integer.MAX_VALUE);
-        log.info("Fin de recherche case..." + model + "profondeur=" + profondeur);
+        log.info("Fin de recherche case...{} profondeur={}", model, profondeur);
         meilleur = pos.getPoint();
         CheckUtils.checkArgument(meilleur != null);
         return meilleur;
@@ -88,7 +88,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
         Couleurs c;
         Position pos, meilleur = null;
         List<Couple> liste_coups;
-        log.entering("AlgoAlphaBeta", "meilleur_score", new Object[]{couleur, niveau});
+        log.debug("enter AlgoAlphaBeta meilleur_score couleur={}, niveau={}", couleur, niveau);
         CheckUtils.checkArgument(niveau > -1);
         liste_coups = new ArrayList<Couple>();
         for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
@@ -197,7 +197,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
             meilleur.setScore(calcul_score(model, 0, 0, this.couleur));
         }
         CheckUtils.checkArgument(meilleur != null);
-        log.exiting("AlgoAlphaBeta", "meilleur_score", meilleur);
+        log.debug("exit AlgoAlphaBeta meilleur_score {}", meilleur);
         return meilleur;
     }
 
