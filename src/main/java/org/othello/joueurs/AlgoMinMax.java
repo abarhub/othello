@@ -21,9 +21,9 @@ public class AlgoMinMax implements AlgoRecherche {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AlgoMinMax.class);
 
-    private ModelOthello model;
-    private Couleurs couleur;
-    private int niveau_profondeur;
+    private final ModelOthello model;
+    private final Couleurs couleur;
+    private final int niveau_profondeur;
 
     public AlgoMinMax(ModelOthello model, Couleurs couleur, int niveau_profondeur) {
         this.model = model;
@@ -57,9 +57,9 @@ public class AlgoMinMax implements AlgoRecherche {
 //        System.out.println("Message avec println");
 //        log.trace("Message avec log");
 //        System.out.println("Message 2 avec println");
-        LOGGER.info("Recherche case..." + model + "profondeur=" + profondeur);
+        LOGGER.info("Recherche case...{} profondeur={}", model, profondeur);
         pos = meilleur_score(model, couleur, profondeur);
-        LOGGER.info("Fin de recherche case..." + model + "profondeur=" + profondeur);
+        LOGGER.info("Fin de recherche case...{} profondeur={}", model, profondeur);
         //if(pos!=null)
         {
             meilleur = pos.getPoint();

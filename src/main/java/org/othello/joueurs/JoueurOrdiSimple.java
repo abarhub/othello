@@ -40,7 +40,7 @@ public class JoueurOrdiSimple extends JoueurNormal implements Runnable {
             if (point != null) {
                 no_ligne = (int) point.getX();
                 no_colonne = (int) point.getY();
-                LOGGER.info("Trouvé : " + no_ligne + "," + no_colonne);
+                LOGGER.info("Trouvé : {},{}", no_ligne, no_colonne);
                 setChoixCase(no_ligne, no_colonne);
             } else {
                 LOGGER.info("Pas trouvé de solution");

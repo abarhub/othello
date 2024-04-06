@@ -21,9 +21,9 @@ public class AlgoAlphaBeta implements AlgoRecherche {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AlgoAlphaBeta.class);
 
-    private ModelOthello model;
-    private Couleurs couleur;
-    private int niveau_profondeur;
+    private final ModelOthello model;
+    private final Couleurs couleur;
+    private final int niveau_profondeur;
 
     public AlgoAlphaBeta(ModelOthello model, Couleurs couleur, int niveau_profondeur) {
         this.model = model;
