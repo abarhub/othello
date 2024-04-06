@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class AlgoAlphaBeta implements AlgoRecherche {
 
-    public static Logger log = LoggerFactory.getLogger(AlgoAlphaBeta.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AlgoAlphaBeta.class);
 
     private ModelOthello model;
     private Couleurs couleur;
@@ -39,13 +39,13 @@ public class AlgoAlphaBeta implements AlgoRecherche {
         Position pos;
         int profondeur = arbre * 2;
 //        log.setLevel(Level.ALL);
-        System.out.println("Message avec println");
-        log.trace("Message avec log");
-        System.out.println("Message 2 avec println");
-        log.info("Recherche case...{} profondeur={}", model, profondeur);
+//        System.out.println("Message avec println");
+//        log.trace("Message avec log");
+//        System.out.println("Message 2 avec println");
+        LOGGER.info("Recherche case...{} profondeur={}", model, profondeur);
         pos = meilleur_score(model, couleur, profondeur, true,
                 Integer.MIN_VALUE, Integer.MAX_VALUE);
-        log.info("Fin de recherche case...{} profondeur={}", model, profondeur);
+        LOGGER.info("Fin de recherche case...{} profondeur={}", model, profondeur);
         meilleur = pos.getPoint();
         CheckUtils.checkArgument(meilleur != null);
         return meilleur;
@@ -88,7 +88,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
         Couleurs c;
         Position pos, meilleur = null;
         List<Couple> liste_coups;
-        log.debug("enter AlgoAlphaBeta meilleur_score couleur={}, niveau={}", couleur, niveau);
+        LOGGER.debug("enter AlgoAlphaBeta meilleur_score couleur={}, niveau={}", couleur, niveau);
         CheckUtils.checkArgument(niveau > -1);
         liste_coups = new ArrayList<Couple>();
         for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
@@ -156,12 +156,12 @@ public class AlgoAlphaBeta implements AlgoRecherche {
             liste.add(tmp2);
             if (max) {
                 if (max_score < min_score0) {
-                    log.info("elagage max");
+                    LOGGER.info("elagage max");
                     break;
                 }
             } else {
                 if (min_score > max_score0) {
-                    log.info("elagage min");
+                    LOGGER.info("elagage min");
                     break;
                 }
             }
@@ -197,7 +197,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
             meilleur.setScore(calcul_score(model, 0, 0, this.couleur));
         }
         CheckUtils.checkArgument(meilleur != null);
-        log.debug("exit AlgoAlphaBeta meilleur_score {}", meilleur);
+        LOGGER.debug("exit AlgoAlphaBeta meilleur_score {}", meilleur);
         return meilleur;
     }
 

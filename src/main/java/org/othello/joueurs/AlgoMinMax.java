@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class AlgoMinMax implements AlgoRecherche {
 
-    public static Logger log = LoggerFactory.getLogger(AlgoMinMax.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AlgoMinMax.class);
 
     private ModelOthello model;
     private Couleurs couleur;
@@ -54,12 +54,12 @@ public class AlgoMinMax implements AlgoRecherche {
 			}
 		}*/
 //        log.setLevel(Level.ALL);
-        System.out.println("Message avec println");
-        log.trace("Message avec log");
-        System.out.println("Message 2 avec println");
-        log.info("Recherche case..." + model + "profondeur=" + profondeur);
+//        System.out.println("Message avec println");
+//        log.trace("Message avec log");
+//        System.out.println("Message 2 avec println");
+        LOGGER.info("Recherche case..." + model + "profondeur=" + profondeur);
         pos = meilleur_score(model, couleur, profondeur);
-        log.info("Fin de recherche case..." + model + "profondeur=" + profondeur);
+        LOGGER.info("Fin de recherche case..." + model + "profondeur=" + profondeur);
         //if(pos!=null)
         {
             meilleur = pos.getPoint();
@@ -82,13 +82,13 @@ public class AlgoMinMax implements AlgoRecherche {
         ModelOthello m;
         Couleurs c;//AlgoMinMax
         Position pos, meilleur = null;
-        log.debug("enter AlgoMinMax meilleur_score couleur={} niveau={}", couleur, niveau);
+        LOGGER.debug("enter AlgoMinMax meilleur_score couleur={} niveau={}", couleur, niveau);
         CheckUtils.checkArgument (niveau > -1);
         liste = new ArrayList<Position>();
         for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
             for (int no_colonne = 0; no_colonne < model.getNbColonnes(); no_colonne++) {
                 if (model.isCaseValide(couleur, no_ligne, no_colonne)) {
-                    log.trace("model={} case({},{}) couleur={}, niveau={}", model, no_ligne, no_colonne, couleur, niveau);
+                    LOGGER.trace("model={} case({},{}) couleur={}, niveau={}", model, no_ligne, no_colonne, couleur, niveau);
                     tmp = new Point(no_ligne, no_colonne);
                     m = new ModelOthello(model);
                     //m.setCouleur(couleur,no_ligne,no_colonne);
@@ -124,7 +124,7 @@ public class AlgoMinMax implements AlgoRecherche {
                 }
             }
         }
-        log.trace("liste={}", liste.size());
+        LOGGER.trace("liste={}", liste.size());
         if (!liste.isEmpty()) {// il y a au moins un coup à jouer
             if (niveau % 2 == 0) {
                 //score_meilleur = 0;
@@ -152,7 +152,7 @@ public class AlgoMinMax implements AlgoRecherche {
             meilleur.setScore(model.getScore(this.couleur));
         }
         CheckUtils.checkArgument (meilleur != null);
-        log.debug("exit AlgoMinMax meilleur_score {}", meilleur);
+        LOGGER.debug("exit AlgoMinMax meilleur_score {}", meilleur);
         return meilleur;
     }
 

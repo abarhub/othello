@@ -22,7 +22,7 @@ import java.util.Vector;
  */
 public class Cadrillage extends JPanel implements MouseListener {
 
-    public static Logger log = LoggerFactory.getLogger(Cadrillage.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Cadrillage.class);
 
     private ModelOthello model;
     private List<CliqueListener> listener;
@@ -162,7 +162,7 @@ public class Cadrillage extends JPanel implements MouseListener {
                             tmp.clique(no_ligne, no_colonne);
                         }
                     }
-                    log.info("ligne=" + no_ligne + ",colonne=" + no_colonne);
+                    LOGGER.info("ligne=" + no_ligne + ",colonne=" + no_colonne);
                     repaint();
                 }
             }

@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class JeuxAuto implements EtatJeuxListener {
 
-    public static Logger log = LoggerFactory.getLogger(JeuxAuto.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JeuxAuto.class);
 
-    private ModelOthello model;
+    private final ModelOthello model;
 
-    private Joueur joueur[];
+    private Joueur[] joueur;
 
     private Controleur controleur;
     private boolean pause_entre_tours = false;
@@ -139,39 +139,38 @@ public class JeuxAuto implements EtatJeuxListener {
     public void demarrage() {
         debut = System.currentTimeMillis();
         nb_tours = 0;
-        System.out.println("model=" + model.toString());
+        LOGGER.info("model={}", model);
         controleur.demarrage(joueur, 0);
-        System.out.println("suite");
-        System.err.println("suite");
+        LOGGER.info("suite");
         while (controleur.change_joueur()) {
-            System.out.println("suite0");
+            LOGGER.info("suite0");
         }
-        System.out.println("Fin du jeu:\n" + model.toString());
+        LOGGER.info("Fin du jeu: {}", model);
     }
 
     public void changement_joueur(Joueur joueur) {
-        log.info("Changement de joueur");
+        LOGGER.info("Changement de joueur");
         affiche_tableau();
         affiche_duree();
         nb_tours++;
     }
 
     private void affiche_duree() {
-        log.info("durée:\n" + controleur.affiche_temps());
+        LOGGER.info("durée:\n" + controleur.affiche_temps());
     }
 
     public void joueur_bloque(Joueur joueur) {
-        log.info("Joueur " + joueur + " bloqué");
+        LOGGER.info("Joueur " + joueur + " bloqué");
     }
 
     public void fin_partie() {
-        log.info("Fin de partie");
+        LOGGER.info("Fin de partie");
         fin = System.currentTimeMillis();
         affiche_tableau();
     }
 
     public void case_incorrecte(Couleurs couleur, int no_ligne, int no_colonne) {
-        log.info("Case incorrecte");
+        LOGGER.info("Case incorrecte");
     }
 
     public void joueur_joue(Couleurs couleur, int no_ligne, int no_colonne) {
@@ -185,7 +184,8 @@ public class JeuxAuto implements EtatJeuxListener {
     }
 
     public void affiche_tableau() {
-        String s, debut;
+        StringBuilder s;
+        StringBuilder debut;
         Couleurs c;
         Joueur[] tab;
         Joueur joueur;
@@ -194,41 +194,41 @@ public class JeuxAuto implements EtatJeuxListener {
             tab = controleur.getListe_joueurs();
             joueur = tab[controleur.getJoueur_courant()];
             c = joueur.getCouleur();
-            debut = "Joueur qui doit jouer:" + c + "\n";
+            debut = new StringBuilder("Joueur qui doit jouer:" + c + "\n");
         } else {
             tab = controleur.getListe_joueurs();
-            debut = "";
+            debut = new StringBuilder();
             max = -1;
             joueur = null;
             for (Joueur j : tab) {
                 c = j.getCouleur();
                 score = model.getScore(c);
-                debut += "Joueur " + c + " : " + score + "\n";
+                debut.append("Joueur ").append(c).append(" : ").append(score).append("\n");
                 if (score > max) {
                     max = score;
                     joueur = j;
                 }
             }
             c = joueur.getCouleur();
-            debut += "Gagnant : " + c + "\n";
-            debut += "Nb tours : " + nb_tours + "\n";
-            debut += "Durée : " + conv(this.fin - this.debut) + "\n";
+            debut.append("Gagnant : ").append(c).append("\n");
+            debut.append("Nb tours : ").append(nb_tours).append("\n");
+            debut.append("Durée : ").append(conv(this.fin - this.debut)).append("\n");
         }
-        debut += "Tableau:\n";
-        s = "";
+        debut.append("Tableau:\n");
+        s = new StringBuilder();
         for (int i = 0; i < model.getNbLignes(); i++) {
             for (int j = 0; j < model.getNbColonnes(); j++) {
                 c = model.get(i, j);
                 if (c == null) {
-                    s += " ";
+                    s.append(" ");
                 } else if (c instanceof CouleursJoueurs) {
                     CouleursJoueurs c2 = (CouleursJoueurs) c;
                     switch (c2) {
                         case Noir:
-                            s += "N";
+                            s.append("N");
                             break;
                         case Blanc:
-                            s += "B";
+                            s.append("B");
                             break;
                         default:
                             CheckUtils.checkArgument (false);
@@ -236,11 +236,11 @@ public class JeuxAuto implements EtatJeuxListener {
                 } else {
                     CheckUtils.checkArgument (false);
                 }
-                s += "|";
+                s.append("|");
             }
-            s += "\n";
+            s.append("\n");
         }
-        log.info(debut + s);
+        LOGGER.info("{} {}", debut, s);
     }
 
     private String conv(long duree) {

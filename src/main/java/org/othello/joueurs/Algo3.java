@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Algo3 implements AlgoRecherche {
 
-    public static Logger log = LoggerFactory.getLogger(Algo3.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Algo3.class);
 
     private ModelOthello model;
     private Couleurs couleur;

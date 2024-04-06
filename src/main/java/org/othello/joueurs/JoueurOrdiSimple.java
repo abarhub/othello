@@ -16,7 +16,7 @@ import java.awt.geom.Point2D;
  */
 public class JoueurOrdiSimple extends JoueurNormal implements Runnable {
 
-    public static Logger log = LoggerFactory.getLogger(JoueurOrdiSimple.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JoueurOrdiSimple.class);
 
     private AlgoRecherche algo;
     // attente avant de commencer a chercher une solution
@@ -40,10 +40,10 @@ public class JoueurOrdiSimple extends JoueurNormal implements Runnable {
             if (point != null) {
                 no_ligne = (int) point.getX();
                 no_colonne = (int) point.getY();
-                log.info("Trouvé : " + no_ligne + "," + no_colonne);
+                LOGGER.info("Trouvé : " + no_ligne + "," + no_colonne);
                 setChoixCase(no_ligne, no_colonne);
             } else {
-                log.info("Pas trouvé de solution");
+                LOGGER.info("Pas trouvé de solution");
             }
         }
     }
@@ -66,7 +66,7 @@ public class JoueurOrdiSimple extends JoueurNormal implements Runnable {
             try {
                 Thread.sleep(ATTENTE);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                LOGGER.error("Erreur", e);
             }
         }
         reflechie();

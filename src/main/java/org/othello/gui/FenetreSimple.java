@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
  */
 public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxListener {
 
-    public static Logger log = LoggerFactory.getLogger(FenetreSimple.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FenetreSimple.class);
 
     private static final int DEFAULT_WIDTH = 530;
     private static final int DEFAULT_HEIGHT = 500;
@@ -311,7 +311,7 @@ public class FenetreSimple extends JFrame implements ActionListener, EtatJeuxLis
 
         }
         cadrillage.repaint();
-        log.info("durée:" + controleur.affiche_temps());
+        LOGGER.info("durée:" + controleur.affiche_temps());
     }
 
     public void changement_joueur(Joueur joueur) {

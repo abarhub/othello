@@ -19,12 +19,12 @@ import java.util.Map;
  */
 public class Controleur implements CliqueListener {
 
-    public static Logger log = LoggerFactory.getLogger(Controleur.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Controleur.class);
 
     private ModelOthello model;
     //private FenetreSimple fenetre;
     private Cadrillage cadrillage;
-    private Joueur liste_joueurs[];
+    private Joueur[] liste_joueurs;
     private int joueur_courant;
     private boolean traite_clique;
     private EtatJeuxListener etat_jeux;
@@ -47,7 +47,7 @@ public class Controleur implements CliqueListener {
 
     public boolean setChoixCase(Couleurs couleur, int no_ligne, int no_colonne) {
         CheckUtils.checkArgument(isDemarrer());
-        log.info("Joueur " + couleur + " a joue " + no_ligne + "," + no_colonne);
+        LOGGER.info("Joueur " + couleur + " a joue " + no_ligne + "," + no_colonne);
         if (model.VerifCouleur(couleur, no_ligne, no_colonne))
         //if(model.SetVerifCouleur(couleur,no_ligne,no_colonne))
         {
@@ -62,7 +62,7 @@ public class Controleur implements CliqueListener {
             }
             return true;
         } else {
-            log.info("Case incorrecte pour le joueur " + couleur + " (" + no_ligne + "," + no_colonne + ")");
+            LOGGER.info("Case incorrecte pour le joueur " + couleur + " (" + no_ligne + "," + no_colonne + ")");
             etat_jeux.case_incorrecte(couleur, no_ligne, no_colonne);
             return false;
         }
@@ -77,7 +77,7 @@ public class Controleur implements CliqueListener {
             etat_jeux.changement_joueur(liste_joueurs[joueur_courant]);
             return true;
         } else if (!fini() && !peut_jouer(joueur_courant)) {
-            log.info("Le joueur " + liste_joueurs[joueur_courant].getCouleur() + " saute son tour !");
+            LOGGER.info("Le joueur " + liste_joueurs[joueur_courant].getCouleur() + " saute son tour !");
             etat_jeux.joueur_bloque(liste_joueurs[joueur_courant]);
             joueur_courant = (joueur_courant + 1) % liste_joueurs.length;
             activation(joueur_courant);
@@ -85,7 +85,7 @@ public class Controleur implements CliqueListener {
             etat_jeux.changement_joueur(liste_joueurs[joueur_courant]);
             return true;
         } else {
-            log.info("Fin de la partie");
+            LOGGER.info("Fin de la partie");
             //fenetre.mise_a_jour();
             etat_jeux.fin_partie();
             return false;
@@ -138,7 +138,7 @@ public class Controleur implements CliqueListener {
         //CheckUtils.checkArgument (isDemarrer());
         //CheckUtils.checkArgument(joueur_joue!= joueur_courant);
         traite_clique = false;
-        log.info("Joueur n°" + joueur_joue + " de jouer (" + liste_joueurs[joueur_joue].getCouleur() + ")");
+        LOGGER.info("Joueur n°" + joueur_joue + " de jouer (" + liste_joueurs[joueur_joue].getCouleur() + ")");
         //cadrillage.removeListener(liste_joueurs[joueur_courant]);
         temps = System.currentTimeMillis();
         duree = temps - debut_temps;
@@ -187,11 +187,11 @@ public class Controleur implements CliqueListener {
 
     public void clique(int no_ligne, int no_colonne) {
         if (isDemarrer()) {
-            log.info("Clique ?");
+            LOGGER.info("Clique ?");
             if (traite_clique) {
                 liste_joueurs[joueur_courant].clique(no_ligne, no_colonne);
             } else {
-                log.info("Pas de traitement");
+                LOGGER.info("Pas de traitement");
             }
         }
     }

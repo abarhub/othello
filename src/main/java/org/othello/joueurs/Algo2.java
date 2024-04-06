@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Algo2 implements AlgoRecherche {
 
-    public static Logger log = LoggerFactory.getLogger(Algo2.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Algo2.class);
 
     private ModelOthello model;
     private Couleurs couleur;
@@ -45,7 +45,7 @@ public class Algo2 implements AlgoRecherche {
             }
         }
         CheckUtils.checkArgument(meilleur != null);
-        log.info("meilleur socre=" + score_meilleur);
+        LOGGER.info("meilleur socre=" + score_meilleur);
         return meilleur;
     }
 
