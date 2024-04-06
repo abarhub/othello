@@ -37,7 +37,7 @@ moins le nombre de case de la couleur du joueur adverse.
 
 Build
 =====
-Le projet est fait pour Java 11.
+Le projet est fait pour Java 21.
 Pour builder le projet :
 ```shell
 mvn clean install
@@ -50,6 +50,16 @@ build_jlink.bat
 
 Cela va créer un répertoire dans target/image avec ce qu'il faut pour livrer le jeux.
 
+Pour créer un jar contenant tout, il faut executer :
+```shell
+build_jar.bat
+```
+Cela va créer un fihcier target/othello.zip contenant le jar et les librairies.
+Il suffira de l'extraite et de l'executer avec la commande :
+```shell
+java -jar org.othello-1.4.0-SNAPSHOT.jar
+```
+
 Pour faire un installeur, il faut executer les commandes suivantes :
 ```shell
 mvn clean package dependency:copy-dependencies -DincludeScope=runtime -DskipTests
@@ -59,7 +69,7 @@ Ensuite, il faut aller dans le répertoire target et lancer la commande :
 ```shell
 jpackage --input . --main-jar org.othello-1.4.0-SNAPSHOT.jar
 ```
-Pour que ça marche, il faut installer Wix en version 3.x . Les versions superieurs ne marchent pas.
+Pour que ça marche, il faut installer Wix en version [3.x](https://github.com/wixtoolset/wix3/releases) . Les versions superieurs ne marchent pas.
 Wix necessite dotnet 6.x ou superieur.
 
 Execution
