@@ -50,6 +50,18 @@ build_jlink.bat
 
 Cela va créer un répertoire dans target/image avec ce qu'il faut pour livrer le jeux.
 
+Pour faire un installeur, il faut executer les commandes suivantes :
+```shell
+mvn clean package dependency:copy-dependencies -DincludeScope=runtime -DskipTests
+jlink --add-modules othello --output target/image --launcher start=othello/org.othello.Main --module-path target/org.othello-1.4.0-SNAPSHOT.jar;target/dependency/slf4j-api-2.0.10.jar;target/dependency/logback-classic-1.5.3.jar;target/dependency/logback-core-1.5.3.jar --bind-services
+```
+Ensuite, il faut aller dans le répertoire target et lancer la commande :
+```shell
+jpackage --input . --main-jar org.othello-1.4.0-SNAPSHOT.jar
+```
+Pour que ça marche, il faut installer Wix en version 3.x . Les versions superieurs ne marchent pas.
+Wix necessite dotnet 6.x ou superieur.
+
 Execution
 =====
 

@@ -7,6 +7,7 @@ import org.othello.joueurs.ListeAlgos;
 import org.othello.model.JeuxAuto;
 import org.othello.model.TableauSimple2;
 import org.othello.utils.CheckUtils;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -26,6 +27,8 @@ public class Main {
 
     public static void main(String[] arg) {
         //config_log();
+        org.slf4j.Logger logger = LoggerFactory.getLogger(Main.class);
+        logger.info("Hello World");
         test1();
         //test2();
         //test3();

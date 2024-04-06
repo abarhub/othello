@@ -1,1 +1,1 @@
-jlink --module-path target/org.othello-1.3.0-SNAPSHOT.jar --add-modules othello --output target/image --launcher start=othello/org.othello.Main
+jlink --module-path target/org.othello-1.4.0-SNAPSHOT.jar --add-modules othello --output target/image --launcher start=othello/org.othello.Main
