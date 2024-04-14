@@ -1,8 +1,21 @@
 package org.othello.gui;
 
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import org.controlsfx.tools.Borders;
+import org.othello.joueurs.ListeAlgos;
+import org.othello.utils.CheckUtils;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class NouveauJFX extends Dialog<NouveauResultat> {
 
@@ -13,6 +26,7 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
     private FenetreJFX fenetreJFX;
     private RadioButton button1Joueur1, button1Joueur2, button2Joueur1, button2Joueur2;
     private ToggleGroup groupJoueur1, groupJoueur2;
+    private ComboBox<String> comboBoxJoueur1, comboBoxJoueur2;
 
     public NouveauJFX(FenetreJFX fenetreJFX) {
 //        initOwner(fenetreJFX);
@@ -31,32 +45,112 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
         button1Joueur1.setToggleGroup(groupJoueur1);
         button2Joueur1.setToggleGroup(groupJoueur1);
 
+        comboBoxJoueur1 = new ComboBox<>();
+        ObservableList<String> list;
+        ListeAlgos[] tab = ListeAlgos.values();
+        List<String> tab2 = Arrays.stream(tab).map(x -> x.getNom()).toList();
+        list = FXCollections.observableArrayList(tab2);
+        comboBoxJoueur1.setItems(list);
+//        comboBoxJoueur1.getSelectionModel().select(1);
+
         groupJoueur2 = new ToggleGroup();
         button1Joueur2 = new RadioButton("Humain");
         button2Joueur2 = new RadioButton("Ordinateur");
         button1Joueur2.setToggleGroup(groupJoueur2);
         button2Joueur2.setToggleGroup(groupJoueur2);
 
-        grid.add(button1Joueur1, 0, 0);
-        grid.add(button2Joueur1, 0, 1);
-        grid.add(button1Joueur2, 0, 2);
-        grid.add(button2Joueur2, 0, 3);
+        comboBoxJoueur2 = new ComboBox<>();
+        list = FXCollections.observableArrayList(tab2);
+        comboBoxJoueur2.setItems(list);
+
+        VBox vBox = new VBox();
+        Node wrappedVBox1 = Borders.wrap(vBox)
+                .etchedBorder()
+                .title("Joueur Blanc")
+                .shadow(Color.GRAY)
+                .build()
+                .build();
+
+        vBox.getChildren().addAll(new Label("Joueur Blanc"),
+                button1Joueur1,
+                button2Joueur1,
+                comboBoxJoueur1);
+
+        VBox vBox2 = new VBox();
+        Node wrappedVBox2 = Borders.wrap(vBox2)
+                .etchedBorder()
+                .title("Joueur Noir")
+                .shadow(Color.GRAY)
+                .build()
+                .build();
+
+        vBox2.getChildren().addAll(new Label("Joueur Noir"),
+                button1Joueur2,
+                button2Joueur2,
+                comboBoxJoueur2);
+
+        grid.add(wrappedVBox1, 0, 0);
+        grid.add(wrappedVBox2, 0, 1);
 
         getDialogPane().setContent(grid);
 
         this.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        this.getDialogPane().lookupButton(ButtonType.OK)
+                .disableProperty()
+                .bind(Bindings.createBooleanBinding(
+                        () -> /*!controller.getHoursField.getText().matches("[0-7]") ||
+                                !controller.getMinutesField.getText().matches("^[0-5]?[0-9]$"),
+                        controller.getHoursField.textProperty(),
+                        controller.getMinutesField.textProperty()*/
+                                groupJoueur1.getSelectedToggle()==null||
+                                        groupJoueur2.getSelectedToggle()==null||
+                                        (groupJoueur1.getSelectedToggle()==button2Joueur1&&
+                                                (comboBoxJoueur1.getValue()==null))
+                        ,
+                        groupJoueur1.selectedToggleProperty(),
+                        groupJoueur2.selectedToggleProperty(),
+                        comboBoxJoueur1.selectionModelProperty()
+                        //comboBoxJoueur1.
+//                        button1Joueur1.getProperties()
+                ));
+
+        comboBoxJoueur1.disableProperty().bind(
+                Bindings.createBooleanBinding(
+                        ()->groupJoueur1.getSelectedToggle()!=button2Joueur1,
+                        groupJoueur1.selectedToggleProperty()
+        ));
+
+        comboBoxJoueur2.disableProperty().bind(
+                Bindings.createBooleanBinding(
+                        ()->groupJoueur2.getSelectedToggle()!=button2Joueur2,
+                        groupJoueur2.selectedToggleProperty()
+                ));
+
     }
 
     private NouveauResultat convertion(ButtonType x) {
         if (x == ButtonType.OK) {
-//            if(action != null) {
-//                action.run();
-//            }
             var toggle1 = groupJoueur1.getSelectedToggle();
             var toggle2 = groupJoueur2.getSelectedToggle();
             if (toggle1 instanceof RadioButton boutonJoueur1 && toggle2 instanceof RadioButton boutonJoueur2) {
-                return new NouveauResultat(boutonJoueur1 == button1Joueur1,
-                        boutonJoueur2 == button1Joueur2);
+                ListeAlgos algoJoueur1 = null, algoJoueur2 = null;
+                boolean joueur1Humain = boutonJoueur1 == button1Joueur1;
+                boolean joueur2Humain = boutonJoueur2 == button1Joueur2;
+                if (!joueur1Humain) {
+                    String value = comboBoxJoueur1.getValue();
+                    algoJoueur1 = ListeAlgos.getByName(value);
+                    CheckUtils.checkArgument(algoJoueur1 != null,
+                            "L'algorithme n'est pas renseigné pour le joueur 1");
+                }
+                if (!joueur2Humain) {
+                    String value = comboBoxJoueur2.getValue();
+                    algoJoueur2 = ListeAlgos.getByName(value);
+                    CheckUtils.checkArgument(algoJoueur2 != null,
+                            "L'algorithme n'est pas renseigné pour le joueur 2");
+                }
+                return new NouveauResultat(joueur1Humain, algoJoueur1,
+                        joueur2Humain, algoJoueur2);
             } else {
                 return null;
             }
@@ -65,7 +159,4 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
         }
     }
 
-//    public setOnAction(Runnable action){
-//        this.action=action;
-//    }
 }

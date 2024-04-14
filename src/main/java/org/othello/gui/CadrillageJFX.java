@@ -3,13 +3,10 @@ package org.othello.gui;
 import javafx.application.Platform;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import org.othello.model.Controleur;
 import org.othello.model.Couleurs;
 import org.othello.model.ModelOthello;
@@ -17,12 +14,10 @@ import org.othello.utils.CheckUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javafx.geometry.Rectangle2D;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class CadrillageJFX extends Canvas implements //MouseListener,
-        CadrillageListener {
+public class CadrillageJFX extends Canvas implements CadrillageListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CadrillageJFX.class);
 
@@ -34,16 +29,18 @@ public class CadrillageJFX extends Canvas implements //MouseListener,
 
         super();
         this.model = model;
-//        this.controleur = controleur;
         listener = new CopyOnWriteArrayList<>();
 
-        //Canvas canvas = new Canvas();
         this.setHeight(512);
         this.setWidth(512);
 
         setOnMouseClicked(mouseEvent -> {
             click(mouseEvent);
         });
+
+        widthProperty().addListener(observable -> dessine());
+        heightProperty().addListener(observable -> dessine());
+
 //        GraphicsContext graphicsContext2D = this.getGraphicsContext2D();
 //
 //        graphicsContext2D.setFill(Color.valueOf("#ff0000"));
@@ -265,5 +262,10 @@ public class CadrillageJFX extends Canvas implements //MouseListener,
 
     public void setModel(ModelOthello model) {
         this.model=model;
+    }
+
+    @Override
+    public boolean isResizable() {
+        return true;
     }
 }

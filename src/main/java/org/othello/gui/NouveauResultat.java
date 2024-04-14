@@ -1,4 +1,7 @@
 package org.othello.gui;
 
-public record NouveauResultat(boolean joueur1Humain, boolean joueur2Humain) {
+import org.othello.joueurs.ListeAlgos;
+
+public record NouveauResultat(boolean joueur1Humain, ListeAlgos algoJoueur1,
+                              boolean joueur2Humain, ListeAlgos algoJoueur2) {
 }

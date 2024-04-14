@@ -60,22 +60,22 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
 
         cadrillage = new CadrillageJFX(model);
 
-        Pane  paneCentral  = new Pane();
+        Pane paneCentral = new Pane();
         //paneCentral.getChildren().add(new Label("Central"));
         paneCentral.getChildren().add(cadrillage);
         gridPane.add(paneCentral, 0, 0, 1, 1);
 
 //        Pane  paneJoueurs  = new Pane();
         VBox vbox = new VBox();
-        joueur1=new Label("Joueur Noir");
-        score1=new Label("Score : ");
-        message1=new Label("");
-        VBox vboxJoueur1 = new VBox(joueur1,score1,message1);
+        joueur1 = new Label("Joueur Noir");
+        score1 = new Label("Score : ");
+        message1 = new Label("");
+        VBox vboxJoueur1 = new VBox(joueur1, score1, message1);
         vbox.getChildren().add(vboxJoueur1);
-        joueur2=new Label("Joueur Blanc");
-        score2=new Label("Score : ");
-        message2=new Label("");
-        VBox vboxJoueur2 = new VBox(joueur2,score2,message2);
+        joueur2 = new Label("Joueur Blanc");
+        score2 = new Label("Score : ");
+        message2 = new Label("");
+        VBox vboxJoueur2 = new VBox(joueur2, score2, message2);
         vbox.getChildren().add(vboxJoueur2);
         gridPane.add(vbox, 1, 0, 1, 1);
 
@@ -85,13 +85,13 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
         menuBar.getMenus().add(menu1);
 
         MenuItem menuNouveau = new MenuItem("Nouveau");
-        menuNouveau.setOnAction(actionEvent ->  {
+        menuNouveau.setOnAction(actionEvent -> {
             actionNouveau();
         });
         menu1.getItems().add(menuNouveau);
 
         MenuItem menuQuitter = new MenuItem("Quitter");
-        menuQuitter.setOnAction(actionEvent ->  {
+        menuQuitter.setOnAction(actionEvent -> {
             actionQuitter();
         });
         menu1.getItems().add(menuQuitter);
@@ -110,14 +110,22 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
         NouveauJFX tmp;
 
         tmp = new NouveauJFX(this);
-        tmp.showAndWait().ifPresent(x->{
-            LOGGER.info("fin: {}",x);
+        tmp.showAndWait().ifPresent(x -> {
+            LOGGER.info("fin: {}", x);
             boolean joueur1_humain, joueur2_humain;
             ListeAlgos algo1, algo2;
             joueur1_humain = x.joueur1Humain();
-            algo1 = ListeAlgos.Simple1;
+            algo1 = x.algoJoueur1();
+            if (!joueur1_humain) {
+                CheckUtils.checkArgument(algo1 != null,
+                        "L'algorithme n'est pas renseigné pour le joueur 1");
+            }
             joueur2_humain = x.joueur2Humain();
-            algo2 = ListeAlgos.Simple1;
+            algo2 = x.algoJoueur2();
+            if (!joueur2_humain) {
+                CheckUtils.checkArgument(algo2 != null,
+                        "L'algorithme n'est pas renseigné pour le joueur 2");
+            }
             debut(joueur1_humain, joueur2_humain, algo1, algo2);
         });
 //        tmp.setVisible(true);
@@ -141,7 +149,7 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
         init(model, joueur1_humain, joueur2_humain, algo1, algo2);
         controleur.demarrage(joueur, 0);
         //repaint();
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             cadrillage.dessine();
             mise_a_jour();
         });
@@ -200,7 +208,6 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
     }
 
 
-
     private void init(ModelOthello model) {
         init(model, true, true, null, null);
     }
@@ -221,7 +228,7 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
         if (joueur1_humain) {
             joueur[0] = new JoueurHumain(model, CouleursJoueurs.Noir, controleur);
         } else {
-            CheckUtils.checkArgument (algo1 != null);
+            CheckUtils.checkArgument(algo1 != null);
             //algo = new Algo1(model, CouleursJoueurs.Noir);
             algo = ListeAlgos.getAlgo(algo1, model, CouleursJoueurs.Noir);
             joueur[0] = new JoueurOrdiSimple(model, CouleursJoueurs.Noir, controleur, algo);
@@ -231,7 +238,7 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
         if (joueur2_humain) {
             joueur[1] = new JoueurHumain(model, CouleursJoueurs.Blanc, controleur);
         } else {
-            CheckUtils.checkArgument (algo2 != null);
+            CheckUtils.checkArgument(algo2 != null);
             //algo=new Algo1(model, CouleursJoueurs.Blanc);
             algo = ListeAlgos.getAlgo(algo2, model, CouleursJoueurs.Blanc);
             joueur[1] = new JoueurOrdiSimple(model, CouleursJoueurs.Blanc, controleur, algo);
@@ -244,17 +251,19 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
 
     @Override
     public void changement_joueur(Joueur joueur) {
-        Platform.runLater(()-> {
+        Platform.runLater(() -> {
+            cadrillage.dessine();
             mise_a_jour();
         });
     }
 
     @Override
     public void joueur_bloque(Joueur joueur) {
-        Platform.runLater(()-> {
+        Platform.runLater(() -> {
+            cadrillage.dessine();
             mise_a_jour();
             //JOptionPane.showMessageDialog(this, "Le joueur " + joueur.getCouleur() + " ne peut pas jouer.\n Il saute son tour.");
-            String message="Le joueur " + joueur.getCouleur() + " ne peut pas jouer.\n Il saute son tour.";
+            String message = "Le joueur " + joueur.getCouleur() + " ne peut pas jouer.\n Il saute son tour.";
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Blocage");
             alert.setHeaderText(null);
@@ -271,7 +280,10 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
         Couleurs tmp, gagnant;
         int max, score;
         boolean exequo;
-        mise_a_jour();
+        Platform.runLater(() -> {
+            cadrillage.dessine();
+                    mise_a_jour();
+                });
         message = "La partie est terminée.\n";
         liste = controleur.getListe_joueurs();
         if (liste != null && liste.length > 0) {
@@ -299,12 +311,15 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
             }
         }
 //        JOptionPane.showMessageDialog(this, message);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Fin de partie");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
+        var message0=message;
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Fin de partie");
+            alert.setHeaderText(null);
+            alert.setContentText(message0);
 
-        alert.showAndWait();
+            alert.showAndWait();
+        });
     }
 
     @Override
