@@ -65,7 +65,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.othello.Main</mainClass>
+<!--                            <mainClass>org.othello.Main</mainClass>-->
+                            <mainClass>org.othello.gui.FenetreJFX</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib</classpathPrefix>
                         </manifest>
