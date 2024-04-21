@@ -1,7 +1,10 @@
 package org.othello.gui;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -13,11 +16,15 @@ import javafx.scene.paint.Color;
 import org.controlsfx.tools.Borders;
 import org.othello.joueurs.ListeAlgos;
 import org.othello.utils.CheckUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class NouveauJFX extends Dialog<NouveauResultat> {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(NouveauJFX.class);
 
     static final int DEFAULT_WIDTH = 200;
     static final int DEFAULT_HEIGHT = 300;
@@ -45,12 +52,11 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
         button1Joueur1.setToggleGroup(groupJoueur1);
         button2Joueur1.setToggleGroup(groupJoueur1);
 
-        comboBoxJoueur1 = new ComboBox<>();
         ObservableList<String> list;
         ListeAlgos[] tab = ListeAlgos.values();
-        List<String> tab2 = Arrays.stream(tab).map(x -> x.getNom()).toList();
+        List<String> tab2 = Arrays.stream(tab).map(ListeAlgos::getNom).toList();
         list = FXCollections.observableArrayList(tab2);
-        comboBoxJoueur1.setItems(list);
+        comboBoxJoueur1 = new ComboBox<>(list);
 //        comboBoxJoueur1.getSelectionModel().select(1);
 
         groupJoueur2 = new ToggleGroup();
@@ -59,9 +65,8 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
         button1Joueur2.setToggleGroup(groupJoueur2);
         button2Joueur2.setToggleGroup(groupJoueur2);
 
-        comboBoxJoueur2 = new ComboBox<>();
         list = FXCollections.observableArrayList(tab2);
-        comboBoxJoueur2.setItems(list);
+        comboBoxJoueur2 = new ComboBox<>(list);
 
         VBox vBox = new VBox();
         Node wrappedVBox1 = Borders.wrap(vBox)
@@ -96,36 +101,79 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
 
         this.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
-        this.getDialogPane().lookupButton(ButtonType.OK)
+        var boutonOk = getDialogPane().lookupButton(ButtonType.OK);
+        boutonOk
                 .disableProperty()
                 .bind(Bindings.createBooleanBinding(
                         () -> /*!controller.getHoursField.getText().matches("[0-7]") ||
                                 !controller.getMinutesField.getText().matches("^[0-5]?[0-9]$"),
                         controller.getHoursField.textProperty(),
                         controller.getMinutesField.textProperty()*/
-                                groupJoueur1.getSelectedToggle()==null||
-                                        groupJoueur2.getSelectedToggle()==null||
-                                        (groupJoueur1.getSelectedToggle()==button2Joueur1&&
-                                                (comboBoxJoueur1.getValue()==null))
+                                groupJoueur1.getSelectedToggle() == null ||
+                                        groupJoueur2.getSelectedToggle() == null ||
+                                        (groupJoueur1.getSelectedToggle() == button2Joueur1 &&
+                                                (comboBoxJoueur1.getValue() == null))||
+                                        (groupJoueur2.getSelectedToggle() == button2Joueur2 &&
+                                                (comboBoxJoueur2.getValue() == null))
                         ,
                         groupJoueur1.selectedToggleProperty(),
                         groupJoueur2.selectedToggleProperty(),
-                        comboBoxJoueur1.selectionModelProperty()
+                        comboBoxJoueur1.valueProperty(),
+                        comboBoxJoueur2.valueProperty()
+//                        comboBoxJoueur1.selectionModelProperty(),
+//                        comboBoxJoueur2.selectionModelProperty()
                         //comboBoxJoueur1.
 //                        button1Joueur1.getProperties()
                 ));
 
+        boutonOk.disableProperty().addListener((observableValue, oldValue, newValue) -> {
+            LOGGER.info("modification ok: {} -> {}",oldValue, newValue);
+        });
+        boutonOk.disableProperty().addListener(observable -> {
+            LOGGER.info("disable ok");
+        });
+//        boutonOk.getProperties().addListener((MapChangeListener<? super Object,? super Object> listener)-> {
+//            //LOGGER.info("modification");
+//        });
+
+//        boutonOk.getProperties().addListener((ObservableValue<? extends Object> observable, Object oldValue, Object newValue) -> {
+//            System.out.printf("B changé : %d -> %d", oldValue, newValue).println();
+//        });
+
         comboBoxJoueur1.disableProperty().bind(
                 Bindings.createBooleanBinding(
-                        ()->groupJoueur1.getSelectedToggle()!=button2Joueur1,
+                        () -> groupJoueur1.getSelectedToggle() != button2Joueur1,
                         groupJoueur1.selectedToggleProperty()
-        ));
+                ));
 
         comboBoxJoueur2.disableProperty().bind(
                 Bindings.createBooleanBinding(
-                        ()->groupJoueur2.getSelectedToggle()!=button2Joueur2,
+                        () -> groupJoueur2.getSelectedToggle() != button2Joueur2,
                         groupJoueur2.selectedToggleProperty()
                 ));
+
+        comboBoxJoueur1.disableProperty().addListener((observableValue, oldValue, newValue) -> {
+            LOGGER.info("modification disable combo1: {} -> {}",oldValue, newValue);
+        });
+        comboBoxJoueur1.disableProperty().addListener(observable -> {
+            LOGGER.info("disable disable combo1");
+        });
+
+//        comboBoxJoueur1.selectionModelProperty().addListener((observableValue, oldValue, newValue) -> {
+//            LOGGER.info("modification selection combo1: {} -> {}",oldValue, newValue);
+//        });
+//        comboBoxJoueur1.selectionModelProperty().addListener(observable -> {
+//            LOGGER.info("disable selection combo1");
+//        });
+
+//        comboBoxJoueur1.onActionProperty().addListener((observableValue, oldValue, newValue) -> {
+//            LOGGER.info("modification2 selection combo1: {} -> {}",oldValue, newValue);
+//        });
+        comboBoxJoueur1.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            LOGGER.info("modification selection combo1: {} -> {}",oldValue, newValue);
+        });
+
+        //comboBoxJoueur1.onAction().Property()
 
     }
 

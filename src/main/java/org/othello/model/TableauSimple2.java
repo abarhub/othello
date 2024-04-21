@@ -129,7 +129,6 @@ public class TableauSimple2 implements TableauGenerique {
 
     public static boolean get_bit(long val, int no_ligne, int no_colonne, int nb_colonne) {
         long pos, tmp2;
-        long tmp;
         CheckUtils.checkArgument (no_ligne >= 0);
         CheckUtils.checkArgument (no_colonne >= 0);
         CheckUtils.checkArgument (no_ligne < nb_colonne);

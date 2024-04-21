@@ -18,10 +18,6 @@ import org.othello.utils.CheckUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
-
-//import javax.swing.*;
-//import java.util.Observer;
 
 public class FenetreJFX extends Application implements EtatJeuxListener {
 
