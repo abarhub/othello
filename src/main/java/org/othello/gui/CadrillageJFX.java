@@ -9,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import org.othello.model.Controleur;
 import org.othello.model.Couleurs;
+import org.othello.model.CouleursJoueurs;
 import org.othello.model.ModelOthello;
 import org.othello.utils.CheckUtils;
 import org.slf4j.Logger;
@@ -34,20 +35,10 @@ public class CadrillageJFX extends Canvas implements CadrillageListener {
         this.setHeight(512);
         this.setWidth(512);
 
-        setOnMouseClicked(mouseEvent -> {
-            click(mouseEvent);
-        });
+        setOnMouseClicked(this::click);
 
         widthProperty().addListener(observable -> dessine());
         heightProperty().addListener(observable -> dessine());
-
-//        GraphicsContext graphicsContext2D = this.getGraphicsContext2D();
-//
-//        graphicsContext2D.setFill(Color.valueOf("#ff0000"));
-//        graphicsContext2D.fillRect(100, 100, 200, 200);
-//
-//        graphicsContext2D.setStroke(Color.valueOf("#0000ff"));
-//        graphicsContext2D.strokeRect(200, 200, 200, 200);
 
         dessine();
 
@@ -115,9 +106,7 @@ public class CadrillageJFX extends Canvas implements CadrillageListener {
 
         GraphicsContext graphicsContext2D = this.getGraphicsContext2D();
 
-//        Graphics2D g2 = (Graphics2D) g;
         Rectangle2D rect;
-//        Ellipse2D ellipse;
         final int width = getWidthCases();
         final int height = getHeightCases();
         int x, y;
@@ -132,35 +121,23 @@ public class CadrillageJFX extends Canvas implements CadrillageListener {
         for (int no_lignes = 0; no_lignes < model.getNbLignes(); no_lignes++) {
             x = 0;
             for (int no_colonne = 0; no_colonne < model.getNbColonnes(); no_colonne++) {
-                //rect=new Rectangle2D.Double(x,y, width, height);
                 rect = getCase(no_lignes, no_colonne);
 
                 if (joueur_courant != null && model.isCaseValide(joueur_courant, no_lignes, no_colonne)) {
-//                    g2.setPaint(java.awt.Color.BLUE);
                     graphicsContext2D.setFill(Color.BLUE);
                 } else {
-                    //g2.setPaint(Color.GREEN);
-//                    g2.setPaint(new java.awt.Color(0, 255, 100));
                     graphicsContext2D.setFill(Color.rgb(0,255,100));
                 }
-                //if(no_lignes%2==0)
-                //g2.setPaint(Color.GREEN);
-                //else
-                //g2.setPaint(Color.RED);
+
                 graphicsContext2D.fillRect(rect.getMinX(), rect.getMinY(), rect.getWidth(), rect.getHeight());
-//                g2.fill(rect);
                 couleur = model.get(no_lignes, no_colonne);
                 if (couleur != null) {
-//                    ellipse = new Ellipse2D.Double();
-//                    ellipse.setFrame(rect);
-//                    g2.setPaint(couleur.getColor());
-//                    g2.fill(ellipse);
-                    if(couleur.getColor()== java.awt.Color.BLACK) {
+                    if(couleur== CouleursJoueurs.Noir) {
                         graphicsContext2D.setFill(Color.BLACK);
-                    } else if (couleur.getColor()== java.awt.Color.WHITE) {
+                    } else if (couleur== CouleursJoueurs.Blanc) {
                         graphicsContext2D.setFill(Color.WHITE);
                     } else {
-                        CheckUtils.checkArgument(false,"Couleur invalide:"+couleur.getColor());
+                        CheckUtils.checkArgument(false,"Couleur invalide:"+couleur.getJfxColor());
                     }
                     graphicsContext2D.fillOval(rect.getMinX(), rect.getMinY(), rect.getWidth(), rect.getHeight());
                 }

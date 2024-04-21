@@ -90,7 +90,7 @@ public class AlgoAlphaBeta implements AlgoRecherche {
         List<Couple> liste_coups;
         LOGGER.debug("enter AlgoAlphaBeta meilleur_score couleur={}, niveau={}", couleur, niveau);
         CheckUtils.checkArgument(niveau > -1);
-        liste_coups = new ArrayList<Couple>();
+        liste_coups = new ArrayList<>();
         for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
             for (int no_colonne = 0; no_colonne < model.getNbColonnes(); no_colonne++) {
                 if (model.isCaseValide(couleur, no_ligne, no_colonne)) {
@@ -106,8 +106,8 @@ public class AlgoAlphaBeta implements AlgoRecherche {
             //for (int no_ligne = 0; no_ligne < model.getNbLignes(); no_ligne++) {
             //for (int no_colonne = 0; no_colonne < model.getNbColonnes(); no_colonne++) {
             int no_ligne, no_colonne;
-            no_ligne = c2.getNo_ligne();
-            no_colonne = c2.getNo_colonne();
+            no_ligne = c2.no_ligne();
+            no_colonne = c2.no_colonne();
             CheckUtils.checkArgument(model.isCaseValide(couleur, no_ligne, no_colonne));
             //log.finest("model="+model+"case(" + no_ligne+","+no_colonne + ")couleur="+couleur+",niveau=" + niveau);
             tmp = new Point(no_ligne, no_colonne);
@@ -210,10 +210,10 @@ public class AlgoAlphaBeta implements AlgoRecherche {
             List<Couple> tmp;
             ModelOthello m;
             int no_ligne, no_colonne, score;
-            map = new TreeMap<Integer, List<Couple>>();
+            map = new TreeMap<>();
             for (Couple c : liste_coups) {
-                no_ligne = c.getNo_ligne();
-                no_colonne = c.getNo_colonne();
+                no_ligne = c.no_ligne();
+                no_colonne = c.no_colonne();
                 m = new ModelOthello(model);
                 m.SetVerifCouleur(couleur, no_ligne, no_colonne);
                 //score = m.getScore(this.couleur);

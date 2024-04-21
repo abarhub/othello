@@ -20,6 +20,9 @@ public abstract class JoueurNormal implements Joueur {
     protected boolean joue;
 
     public JoueurNormal(ModelOthello model, Couleurs couleur, Controleur controleur) {
+        CheckUtils.checkArgument(model != null);
+        CheckUtils.checkArgument(couleur != null);
+        CheckUtils.checkArgument(controleur != null);
         this.model = model;
         this.couleur = couleur;
         this.controleur = controleur;
@@ -33,12 +36,6 @@ public abstract class JoueurNormal implements Joueur {
     public void clique(int no_ligne, int no_colonne) {
 
     }
-
-    public Point2D getChoixCase() {
-        Point2D res = null;
-        return res;
-    }
-
 
     public Couleurs getCouleur() {
         return couleur;

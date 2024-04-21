@@ -1,6 +1,5 @@
 package org.othello.model;
 
-import org.othello.gui.Cadrillage;
 import org.othello.gui.CadrillageListener;
 import org.othello.gui.CliqueListener;
 import org.othello.joueurs.Joueur;
@@ -36,9 +35,7 @@ public class Controleur implements CliqueListener {
 
     public Controleur(ModelOthello model, EtatJeuxListener etat_jeux, CadrillageListener cadrillage) {
         this.model = model;
-        //this.fenetre= fenetre;
         if (cadrillage != null) {
-//            this.cadrillage = cadrillage;
             cadrillage.addListener(this);
         }
         joueur_courant = -1;

@@ -177,14 +177,14 @@ public class TestNeuronne {
             joueur = jeux.getJoueur()[0];
             liste_coups = jeux.getListe_coups();
             for (Coup c : liste_coups) {
-                if (c.getCouleur() == joueur.getCouleur()) {
-                    model = c.getModel();
-                    no_ligne = c.getNo_ligne();
-                    no_colonne = c.getNo_colonne();
+                if (c.couleur() == joueur.getCouleur()) {
+                    model = c.model();
+                    no_ligne = c.no_ligne();
+                    no_colonne = c.no_colonne();
                     model2 = new ModelOthello(model);
-                    b = model2.SetVerifCouleur(c.getCouleur(), no_ligne, no_colonne);
+                    b = model2.SetVerifCouleur(c.couleur(), no_ligne, no_colonne);
                     CheckUtils.checkArgument(b);
-                    tmp1 = conv2(model, c.getCouleur());
+                    tmp1 = conv2(model, c.couleur());
                     //tmp2=conv2(model2);
                     tmp2 = new ArrayList<Double>();
                     for (int i = 0; i < model.getNbLignes(); i++) {
