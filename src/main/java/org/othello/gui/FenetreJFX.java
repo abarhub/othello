@@ -5,16 +5,21 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.controlsfx.tools.Borders;
 import org.othello.joueurs.*;
 import org.othello.model.*;
 import org.othello.utils.CheckUtils;
+import org.othello.utils.JavaFXUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +34,7 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
     private ModelOthello model;
     private Controleur controleur;
     private CadrillageJFX cadrillage;
-    private Joueur joueur[];
+    private Joueur[] joueur;
     private Label joueur1, score1, message1;
     private Label joueur2, score2, message2;
 
@@ -44,36 +49,44 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
 //        primaryStage.setWidth(DEFAULT_WIDTH);
 //        primaryStage.setHeight(DEFAULT_HEIGHT);
         primaryStage.setTitle("Othello");
+        primaryStage.setMinWidth(400);
+        primaryStage.setMaxWidth(600);
+        primaryStage.setMinHeight(500);
+        primaryStage.setMaxHeight(600);
 
-//        Group group = new Group();
-//        VBox vbox = new VBox();
-//        vbox.getChildren().addAll(new Text("Code Java pur"));
-//        group.getChildren().add(vbox);
 
         model = new ModelOthello();
 
-        GridPane gridPane = new GridPane();
+//        GridPane gridPane = new GridPane();
+        BorderPane border = new BorderPane();
 
         cadrillage = new CadrillageJFX(model);
 
-        Pane paneCentral = new Pane();
-        //paneCentral.getChildren().add(new Label("Central"));
-        paneCentral.getChildren().add(cadrillage);
-        gridPane.add(paneCentral, 0, 0, 1, 1);
+        BorderPane paneCentral = new BorderPane();
+        paneCentral.setCenter(cadrillage);
+        paneCentral.setMinWidth(350);
+        paneCentral.setMaxWidth(550);
+        paneCentral.setMinHeight(350);
+        paneCentral.setMaxHeight(550);
 
-//        Pane  paneJoueurs  = new Pane();
+        Node wrappedVBox1 = JavaFXUtils.etchedBorder(paneCentral,"Othello");
+
+        border.setCenter(wrappedVBox1);
+
         VBox vbox = new VBox();
         joueur1 = new Label("Joueur Noir");
         score1 = new Label("Score : ");
         message1 = new Label("");
         VBox vboxJoueur1 = new VBox(joueur1, score1, message1);
-        vbox.getChildren().add(vboxJoueur1);
+        Node wrappedVBox2 = JavaFXUtils.etchedBorder(vboxJoueur1,"Joueur Noir");
+        vbox.getChildren().add(wrappedVBox2);
         joueur2 = new Label("Joueur Blanc");
         score2 = new Label("Score : ");
         message2 = new Label("");
         VBox vboxJoueur2 = new VBox(joueur2, score2, message2);
-        vbox.getChildren().add(vboxJoueur2);
-        gridPane.add(vbox, 1, 0, 1, 1);
+        Node wrappedVBox3 = JavaFXUtils.etchedBorder(vboxJoueur2,"Joueur Blanc");
+        vbox.getChildren().add(wrappedVBox3);
+        border.setRight(vbox);
 
         MenuBar menuBar = new MenuBar();
 
@@ -93,7 +106,7 @@ public class FenetreJFX extends Application implements EtatJeuxListener {
         menu1.getItems().add(menuQuitter);
 
         VBox vBox = new VBox(menuBar);
-        vBox.getChildren().addAll(gridPane);
+        vBox.getChildren().add(border);
 
         primaryStage.setScene(new Scene(vBox));
 

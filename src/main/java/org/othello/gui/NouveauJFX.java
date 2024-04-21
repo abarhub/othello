@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 import org.controlsfx.tools.Borders;
 import org.othello.joueurs.ListeAlgos;
 import org.othello.utils.CheckUtils;
+import org.othello.utils.JavaFXUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,12 +70,7 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
         comboBoxJoueur2 = new ComboBox<>(list);
 
         VBox vBox = new VBox();
-        Node wrappedVBox1 = Borders.wrap(vBox)
-                .etchedBorder()
-                .title("Joueur Blanc")
-                .shadow(Color.GRAY)
-                .build()
-                .build();
+        Node wrappedVBox1 = JavaFXUtils.etchedBorder(vBox,"Joueur Blanc");
 
         vBox.getChildren().addAll(new Label("Joueur Blanc"),
                 button1Joueur1,
@@ -82,12 +78,7 @@ public class NouveauJFX extends Dialog<NouveauResultat> {
                 comboBoxJoueur1);
 
         VBox vBox2 = new VBox();
-        Node wrappedVBox2 = Borders.wrap(vBox2)
-                .etchedBorder()
-                .title("Joueur Noir")
-                .shadow(Color.GRAY)
-                .build()
-                .build();
+        Node wrappedVBox2 =JavaFXUtils.etchedBorder(vBox2,"Joueur Noir");
 
         vBox2.getChildren().addAll(new Label("Joueur Noir"),
                 button1Joueur2,

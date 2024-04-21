@@ -32,8 +32,12 @@ public class CadrillageJFX extends Canvas implements CadrillageListener {
         this.model = model;
         listener = new CopyOnWriteArrayList<>();
 
-        this.setHeight(512);
-        this.setWidth(512);
+//        this.setHeight(512);
+//        this.setWidth(512);
+        int n=330;
+        this.setHeight(n);
+        this.setWidth(n);
+        this.setStyle("-fx-border-color: black");
 
         setOnMouseClicked(this::click);
 
