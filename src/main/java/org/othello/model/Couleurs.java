@@ -9,5 +9,6 @@ import java.awt.*;
  */
 public interface Couleurs {
 
-    public Color getColor();
+    Color getColor();
+    javafx.scene.paint.Color getJfxColor();
 }

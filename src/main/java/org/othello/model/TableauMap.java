@@ -21,15 +21,14 @@ public class TableauMap implements TableauGenerique {
     public TableauMap(int nb_ligne, int nb_colonne) {
         this.nb_ligne = nb_ligne;
         this.nb_colonne = nb_colonne;
-        map = new HashMap<Couple, Couleurs>();
+        map = new HashMap<>();
     }
 
 
     public TableauMap(TableauGenerique couleur_pions, int nbLignes, int nbColonnes) {
         this.nb_ligne = nbLignes;
         this.nb_colonne = nbColonnes;
-        //tab=new Couleurs[nb_ligne][nb_colonne];
-        map = new HashMap<Couple, Couleurs>();
+        map = new HashMap<>();
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 Couleurs c;
@@ -52,7 +51,6 @@ public class TableauMap implements TableauGenerique {
             return map.get(c);
         else
             return null;
-        //return tab[no_ligne][no_colonne];
     }
 
     public void set(Couleurs couleur, int no_ligne, int no_colonne) {
@@ -63,7 +61,6 @@ public class TableauMap implements TableauGenerique {
         Couple c;
         c = new Couple(no_ligne, no_colonne);
         map.put(c, couleur);
-        //tab[no_ligne][no_colonne]=couleur;
     }
 
     public int getNbLigne() {

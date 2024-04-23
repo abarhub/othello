@@ -20,7 +20,7 @@ import java.util.Vector;
  * Date: 5 déc. 2009
  * Time: 15:37:25
  */
-public class Cadrillage extends JPanel implements MouseListener {
+public class Cadrillage extends JPanel implements MouseListener,CadrillageListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Cadrillage.class);
 

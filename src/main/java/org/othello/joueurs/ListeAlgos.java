@@ -13,8 +13,8 @@ public enum ListeAlgos {
     MinMax1("MinMax 1 niveau"), MinMax2("MinMax 2 niveaux"), MinMax3("MinMax 3 niveaux"),
     AlphaBeta1("AlphaBeta 1 niveau"), AlphaBeta2("AlphaBeta 2 niveaux"), AlphaBeta3("AlphaBeta 3 niveaux");
 
-    private ListeAlgos(String nom) {
-
+    ListeAlgos(String nom) {
+        this.nom=nom;
     }
 
     public String getNom() {
@@ -41,6 +41,15 @@ public enum ListeAlgos {
                 return new AlgoAlphaBeta(model, couleur, 2);
             case AlphaBeta3:
                 return new AlgoAlphaBeta(model, couleur, 3);
+        }
+        return null;
+    }
+
+    public static ListeAlgos getByName(String nom) {
+        for (ListeAlgos algo : ListeAlgos.values()) {
+            if (algo.getNom().equals(nom)) {
+                return algo;
+            }
         }
         return null;
     }

@@ -54,10 +54,10 @@ Pour créer un jar contenant tout, il faut executer :
 ```shell
 build_jar.bat
 ```
-Cela va créer un fihcier target/othello.zip contenant le jar et les librairies.
+Cela va créer un fichier target/othello.zip contenant le jar et les librairies.
 Il suffira de l'extraite et de l'executer avec la commande :
 ```shell
-java -jar org.othello-1.4.0-SNAPSHOT.jar
+java --module-path "chemin/vers/le/repertoire/lib" --add-modules javafx.controls -jar org.othello-1.4.0-SNAPSHOT.jar
 ```
 
 Pour faire un installeur, il faut executer les commandes suivantes :

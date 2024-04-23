@@ -1,7 +1,7 @@
 package org.othello;
 
+import org.othello.gui.FenetreJFX;
 import org.othello.gui.FenetreSimple;
-import org.othello.joueurs.AlgoMinMax;
 import org.othello.joueurs.Couple;
 import org.othello.joueurs.ListeAlgos;
 import org.othello.model.JeuxAuto;
@@ -29,6 +29,7 @@ public class Main {
         //test2();
         //test3();
         //test4();
+//        test5(arg);
     }
 
     private static void test1() {
@@ -96,6 +97,10 @@ public class Main {
         tmp1 = TableauSimple2.set_bit(0L, 0, 2, true, 8);
         CheckUtils.checkArgument(tmp1 == 4L, "tmp1=" + tmp1);
 
+    }
+
+    private static void test5(String[] arg){
+        FenetreJFX.launch(arg);
     }
 
 }

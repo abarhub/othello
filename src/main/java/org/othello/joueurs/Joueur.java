@@ -12,12 +12,10 @@ import java.awt.geom.Point2D;
  */
 public interface Joueur extends CliqueListener {
 
-    public Point2D getChoixCase();
+    void setJoue(boolean joue);
 
-    public void setJoue(boolean joue);
+    Couleurs getCouleur();
 
-    public Couleurs getCouleur();
-
-    public void reflechie();
+    void reflechie();
 
 }

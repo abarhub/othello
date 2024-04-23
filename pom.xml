@@ -34,6 +34,18 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>22</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.2.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -53,7 +65,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.othello.Main</mainClass>
+<!--                            <mainClass>org.othello.Main</mainClass>-->
+                            <mainClass>org.othello.gui.FenetreJFX</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib</classpathPrefix>
                         </manifest>

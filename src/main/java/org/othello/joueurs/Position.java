@@ -44,7 +44,6 @@ class Position {
     }
 
     public String toString() {
-        String s;
         int x, y;
         if (point == null) {
             x = -1;
@@ -53,7 +52,6 @@ class Position {
             x = (int) point.getX();
             y = (int) point.getY();
         }
-        s = "[model=" + model + ",pos=(" + x + "," + y + "),score=" + score + "]";
-        return s;
+        return "[model=" + model + ",pos=(" + x + "," + y + "),score=" + score + "]";
     }
 }
